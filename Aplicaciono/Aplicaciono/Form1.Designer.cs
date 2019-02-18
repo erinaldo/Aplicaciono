@@ -54,9 +54,15 @@
             this.label2.Location = new System.Drawing.Point(9, 43);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
+<<<<<<< Updated upstream
             this.label2.Size = new System.Drawing.Size(163, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Cuantos partos cacho";
+=======
+            this.label2.Size = new System.Drawing.Size(180, 28);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Nombre y apellido";
+>>>>>>> Stashed changes
             // 
             // label3
             // 
@@ -65,9 +71,13 @@
             this.label3.Location = new System.Drawing.Point(9, 66);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
+<<<<<<< Updated upstream
             this.label3.Size = new System.Drawing.Size(132, 23);
+=======
+            this.label3.Size = new System.Drawing.Size(53, 28);
+>>>>>>> Stashed changes
             this.label3.TabIndex = 2;
-            this.label3.Text = "Datos Personales";
+            this.label3.Text = "DNI";
             // 
             // label4
             // 
@@ -76,9 +86,13 @@
             this.label4.Location = new System.Drawing.Point(9, 89);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
+<<<<<<< Updated upstream
             this.label4.Size = new System.Drawing.Size(132, 23);
+=======
+            this.label4.Size = new System.Drawing.Size(100, 28);
+>>>>>>> Stashed changes
             this.label4.TabIndex = 3;
-            this.label4.Text = "Datos Personales";
+            this.label4.Text = "Dirección";
             // 
             // label5
             // 
@@ -87,9 +101,13 @@
             this.label5.Location = new System.Drawing.Point(9, 111);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
+<<<<<<< Updated upstream
             this.label5.Size = new System.Drawing.Size(132, 23);
+=======
+            this.label5.Size = new System.Drawing.Size(100, 28);
+>>>>>>> Stashed changes
             this.label5.TabIndex = 4;
-            this.label5.Text = "Datos Personales";
+            this.label5.Text = "Municipio";
             // 
             // label6
             // 
@@ -98,9 +116,13 @@
             this.label6.Location = new System.Drawing.Point(9, 134);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
+<<<<<<< Updated upstream
             this.label6.Size = new System.Drawing.Size(132, 23);
+=======
+            this.label6.Size = new System.Drawing.Size(95, 28);
+>>>>>>> Stashed changes
             this.label6.TabIndex = 5;
-            this.label6.Text = "Datos Personales";
+            this.label6.Text = "Provincia";
             // 
             // Form1
             // 
