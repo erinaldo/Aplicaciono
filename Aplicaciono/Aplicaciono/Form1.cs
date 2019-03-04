@@ -20,7 +20,7 @@ namespace Aplicaciono
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string infoConexion = "data source=127.0.0.1;initial catalog=AppGestion;user id=root;password=;";
+            string infoConexion = @"Data Source=(localdb)\Servidor;Initial Catalog=Aplicaciono;Integrated Security=True";            
             SqlConnection con = new SqlConnection(infoConexion);
             con.Open();
             if (con.State == ConnectionState.Open)
@@ -29,16 +29,11 @@ namespace Aplicaciono
                 SqlCommand cmd = new SqlCommand();
                 SqlDataReader reader;
 
-                cmd.CommandText = "SELECT nombre FROM Customers";
+                cmd.CommandText = q;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
                 string newID = (string)cmd.ExecuteScalar();
-
-                con.Open();
-
                 reader = cmd.ExecuteReader();
-                // Data is accessible through the DataReader object here.
-
                 con.Close();
             }
         }
