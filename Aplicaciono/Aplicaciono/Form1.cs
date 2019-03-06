@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aplicaciono.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,22 +21,15 @@ namespace Aplicaciono
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string infoConexion = @"Data Source=(localdb)\Servidor;Initial Catalog=Aplicaciono;Integrated Security=True";            
-            SqlConnection con = new SqlConnection(infoConexion);
-            con.Open();
-            if (con.State == ConnectionState.Open)
+            var instance = new Conexion();
+            if (instance.AbrirConexion())
             {
-                string q = "Select nombre from Usuario";
-                SqlCommand cmd = new SqlCommand();
-                SqlDataReader reader;
+                var queri = new Queries();
+                string algo = queri.GetNombreUsuario();
 
-                cmd.CommandText = q;
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = con;
-                string newID = (string)cmd.ExecuteScalar();
-                reader = cmd.ExecuteReader();
-                con.Close();
+
             }
         }
     }
 }
+
