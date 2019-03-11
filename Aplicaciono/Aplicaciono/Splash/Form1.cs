@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aplicaciono.Splash;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,9 @@ namespace Aplicaciono
         public SplashView()
         {
             InitializeComponent();
+
+            Conexion repo = new Conexion();
+            SplashInicia splashInicia = new SplashInicia(repo);
         }  
     }
 }
