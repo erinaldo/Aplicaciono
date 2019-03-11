@@ -1,6 +1,7 @@
 ﻿using Aplicaciono.Conexion;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,9 @@ namespace Aplicaciono.Splash
     {
 
         IRepo repo;
-        public Conexion conexion;
+        SqlConnection con;
 
-        public SplashInicia(Conexion conexion)
+        public SplashInicia(Conexione conexion)
         {
             this.repo = conexion;
             //H
@@ -21,7 +22,9 @@ namespace Aplicaciono.Splash
 
         public void setUp()
         {
-            repo.loquesea();
+           con = repo.AbrirConexion();
+            //sql
+            repo.CerrarConexion(con);
         }
     }
 }

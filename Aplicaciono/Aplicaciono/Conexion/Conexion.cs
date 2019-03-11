@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Aplicaciono.Conexion
 {
-    class Conexion : IRepo
+    class Conexione : IRepo
     {
         public SqlConnection AbrirConexion()
         {

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Conexion\IRepo.cs" />
+    <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Splash\SplashInicia.cs" />
     <Compile Include="Splash\Form1.cs">
       <SubType>Form</SubType>

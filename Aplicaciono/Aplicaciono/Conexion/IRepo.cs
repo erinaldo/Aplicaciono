@@ -11,7 +11,7 @@ namespace Aplicaciono.Conexion
     {
         SqlConnection AbrirConexion();
         void CerrarConexion(SqlConnection con);
-
+        Usuario LeerUsuario();
 
     }
 }
