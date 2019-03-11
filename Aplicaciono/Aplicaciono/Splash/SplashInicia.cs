@@ -14,7 +14,7 @@ namespace Aplicaciono.Splash
         public SplashInicia(Conexion conexion)
         {
             this.repo = conexion;
-
+            //H
         }
 
         public void setUp()
