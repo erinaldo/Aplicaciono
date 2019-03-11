@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aplicaciono.Conexion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,8 @@ namespace Aplicaciono.Splash
     class SplashInicia
     {
 
-        Repo repo;
+        IRepo repo;
+        public Conexion conexion;
 
         public SplashInicia(Conexion conexion)
         {
