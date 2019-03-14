@@ -1,21 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Aplicaciono.Modelos
 {
     class Usuario
     {
         public string dni { get; set; }
         public string nombre { get; set; }
+        public string apellido1 { get; set; }
+        public string apellido2 { get; set; }
+        public string direccion { get; set; }
+        public int numero { get; set; }
+        public int cp { get; set; }
+        public string ciudad { get; set; }
+        public string provincia { get; set; }
 
-        public Usuario(string nombre, string dni)
+        public Usuario(string nombre, string dni, string apellido1, string apellido2, string direccion, int numero, int cp, string ciudad, string provincia)
         {
             this.nombre = nombre;
             this.dni = dni;
-
+            this.apellido1 = apellido1;
+            this.apellido2 = apellido2;
+            this.direccion = direccion;
+            this.numero = numero;
+            this.cp = cp;
+            this.ciudad = ciudad;
+            this.provincia = provincia;
         }
 
         public Usuario()

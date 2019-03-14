@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 using Aplicaciono.Modelos;
 
 namespace Aplicaciono.Conexion
@@ -31,7 +25,6 @@ namespace Aplicaciono.Conexion
             {
                 string oString = "Select * from Usuario";
                 SqlCommand oCmd = new SqlCommand(oString, con);
-                con.Open();
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
                 {
                     while (oReader.Read())
