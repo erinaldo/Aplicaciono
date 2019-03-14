@@ -23,7 +23,7 @@ namespace Aplicaciono.Splash
         public void setUp()
         {
            con = repo.AbrirConexion();
-            //sql
+            repo.LeerUsuario(con);
             repo.CerrarConexion(con);
         }
     }

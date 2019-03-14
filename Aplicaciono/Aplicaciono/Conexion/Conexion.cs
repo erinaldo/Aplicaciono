@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Aplicaciono.Modelos;
 
 namespace Aplicaciono.Conexion
 {
@@ -23,6 +24,26 @@ namespace Aplicaciono.Conexion
             con.Open();
         }
 
-        public void testc() { }
+        public Usuario LeerUsuario(SqlConnection con)
+        {
+            Usuario matchingPerson = new Usuario();
+            using (con)
+            {
+                string oString = "Select * from Usuario";
+                SqlCommand oCmd = new SqlCommand(oString, con);
+                con.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        matchingPerson.dni = oReader["dni"].ToString();
+                        matchingPerson.nombre = oReader["nombre"].ToString();
+                    }
+
+                    con.Close();
+                }
+            }
+            return matchingPerson;
+        }
     }
 }

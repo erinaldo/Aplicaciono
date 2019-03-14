@@ -1,4 +1,5 @@
-﻿using Aplicaciono.Splash;
+﻿using Aplicaciono.Conexion;
+using Aplicaciono.Splash;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace Aplicaciono
         {
             InitializeComponent();
 
-            Conexion repo = new Conexion();
+            Conexione repo = new Conexione();
             SplashInicia splashInicia = new SplashInicia(repo);
         }  
     }

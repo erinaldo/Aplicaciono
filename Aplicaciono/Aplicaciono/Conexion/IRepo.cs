@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aplicaciono.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Aplicaciono.Conexion
     {
         SqlConnection AbrirConexion();
         void CerrarConexion(SqlConnection con);
-        Usuario LeerUsuario();
+        Usuario LeerUsuario(SqlConnection con);
 
     }
 }
