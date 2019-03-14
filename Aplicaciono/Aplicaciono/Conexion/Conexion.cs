@@ -15,7 +15,7 @@ namespace Aplicaciono.Conexion
 
         public void CerrarConexion(SqlConnection con)
         {
-            con.Open();
+            con.Close();
         }
 
         public Usuario LeerUsuario(SqlConnection con)
@@ -31,9 +31,14 @@ namespace Aplicaciono.Conexion
                     {
                         matchingPerson.dni = oReader["dni"].ToString();
                         matchingPerson.nombre = oReader["nombre"].ToString();
+                        matchingPerson.apellido1 = oReader["apellido1"].ToString();
+                        matchingPerson.apellido2 = oReader["apellido2"].ToString();
+                        matchingPerson.direccion = oReader["direccion"].ToString();
+                        matchingPerson.numero = oReader["numero"].ToString();
+                        matchingPerson.cp = oReader["cp"].ToString();
+                        matchingPerson.ciudad = oReader["ciudad"].ToString();
+                        matchingPerson.provincia = oReader["nombre"].ToString();
                     }
-
-                    con.Close();
                 }
             }
             return matchingPerson;

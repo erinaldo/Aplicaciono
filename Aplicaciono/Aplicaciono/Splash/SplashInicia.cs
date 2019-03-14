@@ -41,9 +41,10 @@ namespace Aplicaciono.Splash
     
         public void elegirSiUsuarioExiste(Usuario usuario)
         {
-            if(usuario != null)
+            if(usuario.dni != null)
             {
-                Console.WriteLine("nulo");
+                Console.WriteLine("No es nulo");
+                return;
 
                 //cargar pantalla de menu
             }
