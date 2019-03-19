@@ -8,6 +8,6 @@ namespace Aplicaciono.Conexion
         SqlConnection AbrirConexion();
         void CerrarConexion(SqlConnection con);
         Usuario LeerUsuario(SqlConnection con);
-
+        bool GuardarUsuario(SqlConnection con, Usuario user);
     }
 }
