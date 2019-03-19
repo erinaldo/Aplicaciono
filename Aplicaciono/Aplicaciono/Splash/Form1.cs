@@ -12,7 +12,7 @@ namespace Aplicaciono
             InitializeComponent();
 
             Conexione repo = new Conexione();
-            SplashInicia splashInicia = new SplashInicia(repo);
+            SplashInicia splashInicia = new SplashInicia(repo,this);
         }  
     }
 }

@@ -6,13 +6,14 @@ using System.Windows.Forms;
 
 namespace Aplicaciono.CrearUsuario
 {
-    public partial class CrearUsuario : Form
+    public partial class CrearUsuarioView : Form
     {
-        IRepo repo;
+        Conexione repo;
         SqlConnection con;
-        public CrearUsuario()
+        public CrearUsuarioView()
         {
             InitializeComponent();
+            repo = new Conexione();
         }
 
         private void btGuardar_Click(object sender, EventArgs e)
@@ -22,7 +23,10 @@ namespace Aplicaciono.CrearUsuario
             Usuario user = new Usuario(editNombre.Text,editDNI.Text, editApellido1.Text, editApellido2.Text,
                 editDireccion.Text, editNumero.Text, editCP.Text, editCiudad.Text, editProvincia.Text);
 
-            repo.GuardarUsuario(con, user);
+            if (repo.GuardarUsuario(con, user))
+            {
+                MessageBox.Show("Los datos se han introducido correctamente");
+            }
 
             repo.CerrarConexion(con);
         }

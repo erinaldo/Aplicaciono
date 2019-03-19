@@ -1,6 +1,6 @@
 ﻿namespace Aplicaciono.CrearUsuario
 {
-    partial class CrearUsuario
+    partial class CrearUsuarioView
     {
         /// <summary>
         /// Required designer variable.

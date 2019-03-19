@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using Aplicaciono.Modelos;
 
@@ -50,20 +51,11 @@ namespace Aplicaciono.Conexion
             using (con)
             {
                 string sql = "INSERT INTO Usuario(dni,nombre,apellido1,apellido2,direccion," +
-                    "numero, cp, ciudad,provincia) VALUES(@param1,@param2,@param3,@param4,@param5,@param6" +
-                    "@param7, @param8, @param9)";
+                    "numero, cp, ciudad,provincia) VALUES('"+ user.dni + "','" + user.nombre + "','" + user.apellido1 + "'" +
+                    ",'" + user.apellido2 + "','" + user.direccion + "','" + Int16.Parse(user.numero) + "', '" + user.cp + "'," +
+                    " '" + user.ciudad + "', '" + user.provincia + "')";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
-                    cmd.Parameters.Add("@param1", SqlDbType.VarChar, 50).Value = user.dni;
-                    cmd.Parameters.Add("@param2", SqlDbType.VarChar, 50).Value = user.nombre;
-                    cmd.Parameters.Add("@param3", SqlDbType.VarChar, 50).Value = user.apellido1;
-                    cmd.Parameters.Add("@param4", SqlDbType.VarChar, 50).Value = user.apellido2;
-                    cmd.Parameters.Add("@param5", SqlDbType.VarChar, 50).Value = user.direccion;
-                    cmd.Parameters.Add("@param6", SqlDbType.VarChar, 50).Value = user.numero;
-                    cmd.Parameters.Add("@param7", SqlDbType.VarChar, 50).Value = user.cp;
-                    cmd.Parameters.Add("@param8", SqlDbType.VarChar, 50).Value = user.ciudad;
-                    cmd.Parameters.Add("@param9", SqlDbType.VarChar, 50).Value = user.provincia;
-                    cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
             }
