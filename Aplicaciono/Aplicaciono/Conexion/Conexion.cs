@@ -52,7 +52,7 @@ namespace Aplicaciono.Conexion
             {
                 string sql = "INSERT INTO Usuario(dni,nombre,apellido1,apellido2,direccion," +
                     "numero, cp, ciudad,provincia) VALUES('"+ user.dni + "','" + user.nombre + "','" + user.apellido1 + "'" +
-                    ",'" + user.apellido2 + "','" + user.direccion + "','" + Int16.Parse(user.numero) + "', '" + user.cp + "'," +
+                    ",'" + user.apellido2 + "','" + user.direccion + "','" + Int16.Parse(user.numero) + "', '" + int.Parse(user.cp) + "'," +
                     " '" + user.ciudad + "', '" + user.provincia + "')";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
