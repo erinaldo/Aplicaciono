@@ -21,8 +21,6 @@ namespace Aplicaciono
 
             if (progressBar1.Value == 100)
             {
-                System.Threading.Thread.Sleep(5000);
-
                 timer1.Stop();
                 this.Visible = false;
             }
@@ -30,10 +28,7 @@ namespace Aplicaciono
 
         protected override void OnVisibleChanged(EventArgs e)
         {
-            
-                base.OnVisibleChanged(e);
-                //this.Visible = false;
-            
+                base.OnVisibleChanged(e);   
         }
     }
 }
