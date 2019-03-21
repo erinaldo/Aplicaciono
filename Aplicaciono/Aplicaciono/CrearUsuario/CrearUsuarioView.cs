@@ -22,8 +22,8 @@ namespace Aplicaciono.CrearUsuario
             {
                 con = repo.AbrirConexion();
 
-                Usuario user = new Usuario(editNombre.Text, editDNI.Text, editApellido1.Text, editApellido2.Text,
-                    editDireccion.Text, editNumero.Text, editCP.Text, editCiudad.Text, editProvincia.Text);
+                Usuario user = new Usuario(editNombre.Text, editDNI.Text, editApellido1.Text, editDireccion.Text, 
+                    editCP.Text, editCiudad.Text, editProvincia.Text);
 
                 if (repo.GuardarUsuario(con, user))
                 {
@@ -36,16 +36,9 @@ namespace Aplicaciono.CrearUsuario
 
         private bool ValidarFormulario()
         {
-            string Str = editNumero.Text.Trim();
+            string Str = editCP.Text.Trim();
             int Num;
             bool isNum = int.TryParse(Str, out Num);
-            if (!isNum)
-            {
-                MessageBox.Show("El numero de la calle no es correcto");
-                return false;
-            }
-            Str = editCP.Text.Trim();
-            isNum = int.TryParse(Str, out Num);
             if (!isNum)
             {
                 MessageBox.Show("El código postal no es correcto");

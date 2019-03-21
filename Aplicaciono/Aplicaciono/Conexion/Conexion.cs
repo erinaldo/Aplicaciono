@@ -33,10 +33,8 @@ namespace Aplicaciono.Conexion
                     {
                         matchingPerson.dni = oReader["dni"].ToString();
                         matchingPerson.nombre = oReader["nombre"].ToString();
-                        matchingPerson.apellido1 = oReader["apellido1"].ToString();
-                        matchingPerson.apellido2 = oReader["apellido2"].ToString();
+                        matchingPerson.apellido = oReader["apellido1"].ToString();
                         matchingPerson.direccion = oReader["direccion"].ToString();
-                        matchingPerson.numero = oReader["numero"].ToString();
                         matchingPerson.cp = oReader["cp"].ToString();
                         matchingPerson.ciudad = oReader["ciudad"].ToString();
                         matchingPerson.provincia = oReader["nombre"].ToString();
@@ -50,12 +48,24 @@ namespace Aplicaciono.Conexion
         {
             using (con)
             {
-                string sql = "INSERT INTO Usuario(dni,nombre,apellido1,apellido2,direccion," +
-                    "numero, cp, ciudad,provincia) VALUES('"+ user.dni + "','" + user.nombre + "','" + user.apellido1 + "'" +
-                    ",'" + user.apellido2 + "','" + user.direccion + "','" + Int16.Parse(user.numero) + "', '" + int.Parse(user.cp) + "'," +
+                string sql = "INSERT INTO Usuario(dni,nombre,apellido,direccion," +
+                    "cp, ciudad,provincia) VALUES('" + user.dni + "','" + user.nombre + "','" + user.apellido + "'" +
+                    ",'" + user.direccion + "', '" + int.Parse(user.cp) + "'," +
                     " '" + user.ciudad + "', '" + user.provincia + "')";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
-                {
+                {//TODO!!!!!:::::
+                    //string sql = "INSERT INTO Usuario(dni,nombre,apellido,direccion," +
+                    //"cp, ciudad,provincia) VALUES(@dni,@nombre,@apellido,@direccion,@cp,@ciudad,@provincia)";
+                    /*     TODO por si alguna vez se quiere hacer bien
+                    cmd.Parameters.Add("@dni", SqlDbType.NChar).Value = user.dni;
+                    cmd.Parameters.Add("@nombre", SqlDbType.NChar).Value = user.nombre;
+                    cmd.Parameters.Add("@apellido", SqlDbType.NChar).Value = user.apellido;
+                    cmd.Parameters.Add("@direccion", SqlDbType.NChar).Value = user.direccion;
+                    cmd.Parameters.Add("@cp", SqlDbType.Int).Value = user.cp;
+                    cmd.Parameters.Add("@ciudad", SqlDbType.NChar).Value = user.ciudad;
+                    cmd.Parameters.Add("@provincia", SqlDbType.NChar).Value = user.provincia;*/
+
+
                     cmd.ExecuteNonQuery();
                 }
             }
