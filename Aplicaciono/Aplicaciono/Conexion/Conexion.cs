@@ -31,10 +31,8 @@ namespace Aplicaciono.Conexion
                     {
                         matchingPerson.dni = oReader["dni"].ToString();
                         matchingPerson.nombre = oReader["nombre"].ToString();
-                        matchingPerson.apellido1 = oReader["apellido1"].ToString();
-                        matchingPerson.apellido2 = oReader["apellido2"].ToString();
+                        matchingPerson.apellido = oReader["apellido"].ToString();
                         matchingPerson.direccion = oReader["direccion"].ToString();
-                        matchingPerson.numero = oReader["numero"].ToString();
                         matchingPerson.cp = oReader["cp"].ToString();
                         matchingPerson.ciudad = oReader["ciudad"].ToString();
                         matchingPerson.provincia = oReader["nombre"].ToString();
