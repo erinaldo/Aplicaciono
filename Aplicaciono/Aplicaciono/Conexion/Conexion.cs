@@ -1,4 +1,6 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using Aplicaciono.Modelos;
 
 namespace Aplicaciono.Conexion
@@ -40,6 +42,22 @@ namespace Aplicaciono.Conexion
                 }
             }
             return matchingPerson;
+        }
+
+        public bool GuardarUsuario(SqlConnection con, Usuario user)
+        {
+            using (con)
+            {
+                string sql = "INSERT INTO Usuario(dni,nombre,apellido,direccion," +
+                    "cp, ciudad,provincia) VALUES('" + user.dni + "','" + user.nombre + "','" + user.apellido + "'" +
+                    ",'" + user.direccion + "', '" + int.Parse(user.cp) + "'," +
+                    " '" + user.ciudad + "', '" + user.provincia + "')";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true;
         }
     }
 }
