@@ -26,7 +26,7 @@ namespace Aplicaciono.Splash
             {
                 user = repo.LeerUsuario(con);
             }
-            catch(InvalidCastException e)
+            catch (InvalidCastException e)
             {
                 Console.WriteLine(e.ToString());
             }
@@ -34,10 +34,10 @@ namespace Aplicaciono.Splash
             elegirSiUsuarioExiste(user);
         }
 
-    
+
         public void elegirSiUsuarioExiste(Usuario usuario)
         {
-            if(usuario.dni != null)
+            if (usuario.dni != null)
             {
                 Console.WriteLine("No es nulo");
                 return;
@@ -45,7 +45,6 @@ namespace Aplicaciono.Splash
                 //cargar pantalla de menu
             }
             Console.WriteLine("Usuario");
-            //carga pantalla de crear usuario
         }
     }
 }
