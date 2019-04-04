@@ -10,9 +10,6 @@ namespace Aplicaciono
         public SplashView()
         {
             InitializeComponent();
-
-            Conexione repo = new Conexione();
-            SplashInicia splashInicia = new SplashInicia(repo);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -23,6 +20,8 @@ namespace Aplicaciono
             {
                 timer1.Stop();
                 this.Visible = false;
+                Conexione repo = new Conexione();
+                SplashInicia splashInicia = new SplashInicia(repo);
             }
         }
 
