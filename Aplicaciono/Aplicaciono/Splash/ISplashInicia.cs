@@ -8,6 +8,5 @@ namespace Aplicaciono.Splash
 {
     interface ISplashInicia
     {
-        void Iniciar();
     }
 }
