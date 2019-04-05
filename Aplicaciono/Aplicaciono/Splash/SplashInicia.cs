@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace Aplicaciono.Splash
 {
-    class SplashInicia : ISplashInicia
+    class SplashInicia
     {
 
         IRepo repo;
