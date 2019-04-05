@@ -1,11 +1,7 @@
 ﻿using Aplicaciono.Conexion;
 using Aplicaciono.Modelos;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aplicaciono.Splash
 {
@@ -24,13 +20,12 @@ namespace Aplicaciono.Splash
 
         public void setUp()
         {
-            Console.WriteLine("Aqui");
             con = repo.AbrirConexion();
             try
             {
                 user = repo.LeerUsuario(con);
             }
-            catch(InvalidCastException e)
+            catch (InvalidCastException e)
             {
                 Console.WriteLine(e.ToString());
             }
@@ -38,10 +33,10 @@ namespace Aplicaciono.Splash
             elegirSiUsuarioExiste(user);
         }
 
-    
+
         public void elegirSiUsuarioExiste(Usuario usuario)
         {
-            if(usuario.dni != null)
+            if (usuario.dni != null)
             {
                 Console.WriteLine("No es nulo");
                 return;
@@ -49,7 +44,6 @@ namespace Aplicaciono.Splash
                 //cargar pantalla de menu
             }
             Console.WriteLine("Usuario");
-            //carga pantalla de crear usuario
         }
     }
 }
