@@ -189,7 +189,7 @@
             // 
             // btGuardar
             // 
-            this.btGuardar.Location = new System.Drawing.Point(479, 120);
+            this.btGuardar.Location = new System.Drawing.Point(479, 137);
             this.btGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btGuardar.Name = "btGuardar";
             this.btGuardar.Size = new System.Drawing.Size(76, 33);
@@ -200,7 +200,7 @@
             // 
             // btCancelar
             // 
-            this.btCancelar.Location = new System.Drawing.Point(385, 120);
+            this.btCancelar.Location = new System.Drawing.Point(385, 137);
             this.btCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(76, 33);
@@ -213,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 165);
+            this.ClientSize = new System.Drawing.Size(600, 181);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btGuardar);
             this.Controls.Add(this.editProvincia);
