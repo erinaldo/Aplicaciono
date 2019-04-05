@@ -54,7 +54,7 @@ namespace Aplicaciono.CrearUsuario
 
         private void editDNI_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Validaciones.ValidarDni(editDNI.Text);
+            ValidacionesUtils.ValidarDni(editDNI.Text);
         }
     }
 }
