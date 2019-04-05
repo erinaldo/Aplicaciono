@@ -50,7 +50,7 @@
             // 
             this.lbldni.AutoSize = true;
             this.lbldni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldni.Location = new System.Drawing.Point(9, 29);
+            this.lbldni.Location = new System.Drawing.Point(37, 30);
             this.lbldni.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbldni.Name = "lbldni";
             this.lbldni.Size = new System.Drawing.Size(37, 20);
@@ -61,7 +61,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(9, 60);
+            this.lblNombre.Location = new System.Drawing.Point(11, 60);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(65, 20);
@@ -72,7 +72,7 @@
             // 
             this.lblApellido1.AutoSize = true;
             this.lblApellido1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApellido1.Location = new System.Drawing.Point(9, 97);
+            this.lblApellido1.Location = new System.Drawing.Point(3, 90);
             this.lblApellido1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblApellido1.Name = "lblApellido1";
             this.lblApellido1.Size = new System.Drawing.Size(73, 20);
@@ -83,7 +83,7 @@
             // 
             this.lblDireccion.AutoSize = true;
             this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDireccion.Location = new System.Drawing.Point(9, 132);
+            this.lblDireccion.Location = new System.Drawing.Point(1, 120);
             this.lblDireccion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(75, 20);
@@ -94,7 +94,7 @@
             // 
             this.lblProvincia.AutoSize = true;
             this.lblProvincia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProvincia.Location = new System.Drawing.Point(311, 97);
+            this.lblProvincia.Location = new System.Drawing.Point(309, 93);
             this.lblProvincia.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProvincia.Name = "lblProvincia";
             this.lblProvincia.Size = new System.Drawing.Size(72, 20);
@@ -105,7 +105,7 @@
             // 
             this.lblCiudad.AutoSize = true;
             this.lblCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCiudad.Location = new System.Drawing.Point(324, 63);
+            this.lblCiudad.Location = new System.Drawing.Point(322, 63);
             this.lblCiudad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCiudad.Name = "lblCiudad";
             this.lblCiudad.Size = new System.Drawing.Size(59, 20);
@@ -116,7 +116,7 @@
             // 
             this.lblCP.AutoSize = true;
             this.lblCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCP.Location = new System.Drawing.Point(280, 27);
+            this.lblCP.Location = new System.Drawing.Point(274, 33);
             this.lblCP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCP.Name = "lblCP";
             this.lblCP.Size = new System.Drawing.Size(107, 20);
@@ -127,7 +127,7 @@
             // 
             this.editDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editDNI.Location = new System.Drawing.Point(80, 27);
-            this.editDNI.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editDNI.Margin = new System.Windows.Forms.Padding(2);
             this.editDNI.Name = "editDNI";
             this.editDNI.Size = new System.Drawing.Size(170, 26);
             this.editDNI.TabIndex = 9;
@@ -136,8 +136,8 @@
             // editNombre
             // 
             this.editNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editNombre.Location = new System.Drawing.Point(80, 60);
-            this.editNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editNombre.Location = new System.Drawing.Point(80, 57);
+            this.editNombre.Margin = new System.Windows.Forms.Padding(2);
             this.editNombre.Name = "editNombre";
             this.editNombre.Size = new System.Drawing.Size(170, 26);
             this.editNombre.TabIndex = 10;
@@ -145,8 +145,8 @@
             // editApellido1
             // 
             this.editApellido1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editApellido1.Location = new System.Drawing.Point(80, 93);
-            this.editApellido1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editApellido1.Location = new System.Drawing.Point(80, 87);
+            this.editApellido1.Margin = new System.Windows.Forms.Padding(2);
             this.editApellido1.Name = "editApellido1";
             this.editApellido1.Size = new System.Drawing.Size(170, 26);
             this.editApellido1.TabIndex = 11;
@@ -154,8 +154,8 @@
             // editDireccion
             // 
             this.editDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editDireccion.Location = new System.Drawing.Point(80, 132);
-            this.editDireccion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editDireccion.Location = new System.Drawing.Point(80, 117);
+            this.editDireccion.Margin = new System.Windows.Forms.Padding(2);
             this.editDireccion.Name = "editDireccion";
             this.editDireccion.Size = new System.Drawing.Size(170, 26);
             this.editDireccion.TabIndex = 13;
@@ -163,8 +163,8 @@
             // editProvincia
             // 
             this.editProvincia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editProvincia.Location = new System.Drawing.Point(385, 93);
-            this.editProvincia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editProvincia.Location = new System.Drawing.Point(385, 90);
+            this.editProvincia.Margin = new System.Windows.Forms.Padding(2);
             this.editProvincia.Name = "editProvincia";
             this.editProvincia.Size = new System.Drawing.Size(170, 26);
             this.editProvincia.TabIndex = 17;
@@ -173,7 +173,7 @@
             // 
             this.editCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editCiudad.Location = new System.Drawing.Point(385, 60);
-            this.editCiudad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editCiudad.Margin = new System.Windows.Forms.Padding(2);
             this.editCiudad.Name = "editCiudad";
             this.editCiudad.Size = new System.Drawing.Size(170, 26);
             this.editCiudad.TabIndex = 16;
@@ -181,16 +181,16 @@
             // editCP
             // 
             this.editCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editCP.Location = new System.Drawing.Point(385, 25);
-            this.editCP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editCP.Location = new System.Drawing.Point(385, 30);
+            this.editCP.Margin = new System.Windows.Forms.Padding(2);
             this.editCP.Name = "editCP";
             this.editCP.Size = new System.Drawing.Size(170, 26);
             this.editCP.TabIndex = 15;
             // 
             // btGuardar
             // 
-            this.btGuardar.Location = new System.Drawing.Point(508, 262);
-            this.btGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btGuardar.Location = new System.Drawing.Point(479, 120);
+            this.btGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btGuardar.Name = "btGuardar";
             this.btGuardar.Size = new System.Drawing.Size(76, 33);
             this.btGuardar.TabIndex = 18;
@@ -200,8 +200,8 @@
             // 
             // btCancelar
             // 
-            this.btCancelar.Location = new System.Drawing.Point(508, 313);
-            this.btCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btCancelar.Location = new System.Drawing.Point(385, 120);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(76, 33);
             this.btCancelar.TabIndex = 19;
@@ -213,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(600, 165);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btGuardar);
             this.Controls.Add(this.editProvincia);
@@ -230,7 +230,7 @@
             this.Controls.Add(this.lblApellido1);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lbldni);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CrearUsuarioView";
             this.Text = "CrearUsuario";
             this.ResumeLayout(false);
