@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Conexion\IRepo.cs" />
+    <Compile Include="ManuPrincipal\MenuPrincipalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManuPrincipal\MenuPrincipalView.Designer.cs">
+      <DependentUpon>MenuPrincipalView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Splash\SplashInicia.cs" />
     <Compile Include="Splash\Form1.cs">
@@ -58,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ManuPrincipal\MenuPrincipalView.resx">
+      <DependentUpon>MenuPrincipalView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Splash\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
