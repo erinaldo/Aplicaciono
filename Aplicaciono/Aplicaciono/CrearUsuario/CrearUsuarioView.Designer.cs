@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbldni = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellido1 = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@
             this.editCP = new System.Windows.Forms.TextBox();
             this.btGuardar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbldni
@@ -132,6 +135,7 @@
             this.editDNI.Size = new System.Drawing.Size(170, 26);
             this.editDNI.TabIndex = 9;
             this.editDNI.Validating += new System.ComponentModel.CancelEventHandler(this.editDNI_Validating);
+            this.editDNI.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editNombre
             // 
@@ -141,6 +145,8 @@
             this.editNombre.Name = "editNombre";
             this.editNombre.Size = new System.Drawing.Size(170, 26);
             this.editNombre.TabIndex = 10;
+            this.editNombre.Validating += new System.ComponentModel.CancelEventHandler(this.editNombre_Validating);
+            this.editNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editApellido1
             // 
@@ -150,6 +156,8 @@
             this.editApellido1.Name = "editApellido1";
             this.editApellido1.Size = new System.Drawing.Size(170, 26);
             this.editApellido1.TabIndex = 11;
+            this.editApellido1.Validating += new System.ComponentModel.CancelEventHandler(this.editApellido1_Validating);
+            this.editApellido1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editDireccion
             // 
@@ -159,6 +167,8 @@
             this.editDireccion.Name = "editDireccion";
             this.editDireccion.Size = new System.Drawing.Size(170, 26);
             this.editDireccion.TabIndex = 13;
+            this.editDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.editDireccion_Validating);
+            this.editDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editProvincia
             // 
@@ -168,6 +178,8 @@
             this.editProvincia.Name = "editProvincia";
             this.editProvincia.Size = new System.Drawing.Size(170, 26);
             this.editProvincia.TabIndex = 17;
+            this.editProvincia.Validating += new System.ComponentModel.CancelEventHandler(this.editProvincia_Validating);
+            this.editProvincia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editCiudad
             // 
@@ -177,6 +189,8 @@
             this.editCiudad.Name = "editCiudad";
             this.editCiudad.Size = new System.Drawing.Size(170, 26);
             this.editCiudad.TabIndex = 16;
+            this.editCiudad.Validating += new System.ComponentModel.CancelEventHandler(this.editCiudad_Validating);
+            this.editCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editCP
             // 
@@ -186,6 +200,8 @@
             this.editCP.Name = "editCP";
             this.editCP.Size = new System.Drawing.Size(170, 26);
             this.editCP.TabIndex = 15;
+            this.editCP.Validating += new System.ComponentModel.CancelEventHandler(this.editCP_Validating);
+            this.editCP.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // btGuardar
             // 
@@ -208,6 +224,10 @@
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // CrearUsuarioView
             // 
@@ -233,6 +253,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CrearUsuarioView";
             this.Text = "CrearUsuario";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +277,6 @@
         private System.Windows.Forms.TextBox editCP;
         private System.Windows.Forms.Button btGuardar;
         private System.Windows.Forms.Button btCancelar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

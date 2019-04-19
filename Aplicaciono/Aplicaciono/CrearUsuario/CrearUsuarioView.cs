@@ -10,51 +10,81 @@ namespace Aplicaciono.CrearUsuario
     {
         Conexione repo;
         SqlConnection con;
+        ICrearUsuarioPresenter presenter;
+        Usuario usuario;
         public CrearUsuarioView()
         {
             InitializeComponent();
+            this.ActiveControl = lbldni;
             repo = new Conexione();
+            presenter = new CrearUsuarioPresenter(this, repo);
+            usuario = new Usuario();
         }
 
         private void btGuardar_Click(object sender, EventArgs e)
         {
-            if (ValidarFormulario())
-            {
-                con = repo.AbrirConexion();
-
-                Usuario user = new Usuario(editNombre.Text, editDNI.Text, editApellido1.Text, editDireccion.Text, 
-                    editCP.Text, editCiudad.Text, editProvincia.Text);
-
-                if (repo.GuardarUsuario(con, user))
-                {
-                    MessageBox.Show("Los datos se han introducido correctamente");
-                }
-
-                repo.CerrarConexion(con);
-            }
-        }
-
-        private bool ValidarFormulario()
-        {
-            string Str = editCP.Text.Trim();
-            int Num;
-            bool isNum = int.TryParse(Str, out Num);
-            if (!isNum)
-            {
-                MessageBox.Show("El código postal no es correcto");
-                return false;
-            }
-            return true;
+            presenter.guardarClick(usuario, con);
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-
+            presenter.cancelarClick();
         }
 
         private void editDNI_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ValidacionesUtils.ValidarDni(editDNI.Text);
+            if(presenter.comprobarDni(e, errorProvider1, editDNI))
+            {
+                usuario.dni = editDNI.Text;
+            }
+        }
+
+        private void editNombre_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (presenter.comprobarPalabras(e, errorProvider1, editNombre))
+            {
+                usuario.nombre = editNombre.Text;
+            }
+        }
+
+        private void editApellido1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(presenter.comprobarPalabras(e, errorProvider1, editApellido1))
+            {
+                usuario.apellido = editApellido1.Text;
+            }
+        }
+
+        private void editDireccion_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(presenter.comprobarPalabras(e, errorProvider1, editDireccion))
+            {
+                usuario.direccion = editDireccion.Text;
+            }
+        }
+
+        private void editCP_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(presenter.comprobarCP(e, errorProvider1, editCP))
+            {
+                usuario.cp = editCP.Text;
+            }
+        }
+
+        private void editCiudad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(presenter.comprobarPalabras(e, errorProvider1, editCiudad))
+            {
+                usuario.ciudad = editCiudad.Text;
+            }
+        }
+
+        private void editProvincia_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(presenter.comprobarPalabras(e, errorProvider1, editProvincia))
+            {
+                usuario.provincia = editProvincia.Text;
+            }
         }
     }
 }

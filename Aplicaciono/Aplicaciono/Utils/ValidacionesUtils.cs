@@ -9,9 +9,10 @@ namespace Aplicaciono.CrearUsuario
 {
     static class ValidacionesUtils
     {
-        private static string valNif = "/^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]";
-        private static string valNie = "/^[XYZ][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]";
-        private static string valNombre = @"/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$";
+        private static string valNif = "^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]";
+        private static string valNie = "^[XYZ][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]";
+        private static string valNombre = @"^([A-ZÁÉÍÓÚ]+[\s]*)+$";
+        private static string valCP = @"^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$";
         private static Match match;
         private static Match match2;
 
@@ -21,17 +22,27 @@ namespace Aplicaciono.CrearUsuario
         {
             match = Regex.Match(editDni, valNif, RegexOptions.IgnoreCase);
             match2 = Regex.Match(editDni, valNie, RegexOptions.IgnoreCase);
-            if (editDni != string.Empty && match.Success && match2.Success)
+            if (editDni != string.Empty && (Regex.IsMatch(editDni, valNif) || Regex.IsMatch(editDni, valNie)))
             {
                 return true;
             }
             return false;
         }
 
-        public static bool ValidarNombreApellidos(string editNombre)
+        public static bool ValidarPrimeraMayus(string editNombre)
         {
             match = Regex.Match(editNombre, valNombre, RegexOptions.IgnoreCase);
-            if (editNombre != string.Empty && match.Success)
+            if (editNombre != string.Empty && Regex.IsMatch(editNombre, valNombre))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool ValidarCodigoPostal(string editCP)
+        {
+            match = Regex.Match(editCP, valCP, RegexOptions.IgnoreCase);
+            if (editCP != string.Empty && match.Success)
             {
                 return true;
             }
