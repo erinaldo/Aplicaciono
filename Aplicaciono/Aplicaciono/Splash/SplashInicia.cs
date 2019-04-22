@@ -14,10 +14,9 @@ namespace Aplicaciono.Splash
         Usuario user;
         SplashView splashView;
 
-        public SplashInicia(Conexione conexion, SplashView splashView)
+        public SplashInicia(Conexione conexion)
         {
             this.repo = conexion;
-            this.splashView = splashView;
             this.setUp();
         }
 
@@ -48,14 +47,6 @@ namespace Aplicaciono.Splash
             }
             CrearUsuarioView crearUsuario = new CrearUsuarioView();
             crearUsuario.ShowDialog();
-            Console.WriteLine("Usuario");
-            splashView.Hide();
-            splashView.Visible = false;
-            if (!splashView.Visible)
-            {
-                CrearUsuarioView cuv = new CrearUsuarioView();
-                cuv.Show();
-            }
         }
     }
 }
