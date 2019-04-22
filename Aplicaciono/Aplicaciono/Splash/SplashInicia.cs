@@ -1,4 +1,5 @@
 ﻿using Aplicaciono.Conexion;
+using Aplicaciono.CrearUsuario;
 using Aplicaciono.Modelos;
 using System;
 using System.Data.SqlClient;
@@ -11,10 +12,12 @@ namespace Aplicaciono.Splash
         IRepo repo;
         SqlConnection con;
         Usuario user;
+        SplashView splashView;
 
-        public SplashInicia(Conexione conexion)
+        public SplashInicia(Conexione conexion, SplashView splashView)
         {
             this.repo = conexion;
+            this.splashView = splashView;
             this.setUp();
         }
 
@@ -43,7 +46,16 @@ namespace Aplicaciono.Splash
 
                 //cargar pantalla de menu
             }
+            CrearUsuarioView crearUsuario = new CrearUsuarioView();
+            crearUsuario.ShowDialog();
             Console.WriteLine("Usuario");
+            splashView.Hide();
+            splashView.Visible = false;
+            if (!splashView.Visible)
+            {
+                CrearUsuarioView cuv = new CrearUsuarioView();
+                cuv.Show();
+            }
         }
     }
 }

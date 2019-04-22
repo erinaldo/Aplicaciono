@@ -1,5 +1,4 @@
-﻿
-namespace Aplicaciono.Modelos
+﻿namespace Aplicaciono.Modelos
 {
     class Usuario
     {
