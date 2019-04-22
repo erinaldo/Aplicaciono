@@ -29,14 +29,17 @@ namespace Aplicaciono.CrearUsuario
         {
             if (ValidacionesUtils.ValidarCodigoPostal(editCP.Text))
             {
-                e.Cancel = false;
                 errorProvider.SetError(editCP, null);
                 return true;
             }
+            else if (editCP.Text == "")
+            {
+                errorProvider.SetError(editCP, "Este campo no puede ser vacío");
+                return false;
+            }
             else
             {
-                e.Cancel = true;
-                errorProvider.SetError(editCP, "Lo has hecho mal");
+                errorProvider.SetError(editCP, "El código postal no existe");
                 return false;
             }
             throw new NotImplementedException();
@@ -46,14 +49,17 @@ namespace Aplicaciono.CrearUsuario
         {
             if (ValidacionesUtils.ValidarDni(editDNI.Text))
             {
-                e.Cancel = false;
                 errorProvider.SetError(editDNI, null);
                 return true;
             }
+            else if(editDNI.Text == "")
+            {
+                errorProvider.SetError(editDNI, "Este campo no puede ser vacío");
+                return false;
+            }
             else
             {
-                e.Cancel = true;
-                errorProvider.SetError(editDNI, "Lo has hecho mal");
+                errorProvider.SetError(editDNI, "El DNI introducido es incorrecto");
                 return false;
             }
             throw new NotImplementedException();
@@ -61,16 +67,39 @@ namespace Aplicaciono.CrearUsuario
 
         public bool comprobarPalabras(CancelEventArgs e, ErrorProvider errorProvider, TextBox editPalabra)
         {
-            if (ValidacionesUtils.ValidarPrimeraMayus(editPalabra.Text))
+            if (ValidacionesUtils.ValidarPalabras(editPalabra.Text))
             {
-                e.Cancel = false;
                 errorProvider.SetError(editPalabra, null);
                 return true;
             }
+            else if (editPalabra.Text == "")
+            {
+                errorProvider.SetError(editPalabra, "Este campo no puede ser vacío");
+                return false;
+            }
             else
             {
-                e.Cancel = true;
-                errorProvider.SetError(editPalabra, "Lo has hecho mal");
+                errorProvider.SetError(editPalabra, "Este campo no es correcto");
+                return false;
+            }
+            throw new NotImplementedException();
+        }
+
+        public bool comprobarDireccion(CancelEventArgs e, ErrorProvider errorProvider, TextBox editDireccion)
+        {
+            if (ValidacionesUtils.ValidarDireccion(editDireccion.Text))
+            {
+                errorProvider.SetError(editDireccion, null);
+                return true;
+            }
+            else if (editDireccion.Text == "")
+            {
+                errorProvider.SetError(editDireccion, "Este campo no puede ser vacío");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(editDireccion, "Este campo no es correcto");
                 return false;
             }
             throw new NotImplementedException();

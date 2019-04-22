@@ -57,7 +57,7 @@ namespace Aplicaciono.CrearUsuario
 
         private void editDireccion_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(presenter.comprobarPalabras(e, errorProvider1, editDireccion))
+            if(presenter.comprobarDireccion(e, errorProvider1, editDireccion))
             {
                 usuario.direccion = editDireccion.Text;
             }
