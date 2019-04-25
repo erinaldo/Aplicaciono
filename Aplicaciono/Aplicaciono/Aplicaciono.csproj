@@ -53,6 +53,14 @@
     </Compile>
     <Compile Include="ManuPrincipal\MenuPrincipalView.Designer.cs">
       <DependentUpon>MenuPrincipalView.cs</DependentUpon>
+    <Compile Include="CrearUsuario\CrearUsuarioPresenter.cs" />
+    <Compile Include="CrearUsuario\ICrearUsuarioPresenter.cs" />
+    <Compile Include="Utils\ValidacionesUtils.cs" />
+    <Compile Include="CrearUsuario\CrearUsuarioView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearUsuario\CrearUsuarioView.Designer.cs">
+      <DependentUpon>CrearUsuarioView.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Splash\SplashInicia.cs" />
@@ -66,6 +74,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ManuPrincipal\MenuPrincipalView.resx">
       <DependentUpon>MenuPrincipalView.cs</DependentUpon>
+    <EmbeddedResource Include="CrearUsuario\CrearUsuarioView.resx">
+      <DependentUpon>CrearUsuarioView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Splash\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
