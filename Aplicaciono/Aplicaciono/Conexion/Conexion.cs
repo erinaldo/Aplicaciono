@@ -59,5 +59,24 @@ namespace Aplicaciono.Conexion
             }
             return true;
         }
+
+        public bool GuardarFactura(SqlConnection con, Factura fact)
+        {
+            using (con)
+            {
+                string sql = "INSERT INTO Albaranes(NumAlbaran,IdLocalidad,IdCliente,Matricula," +
+                "Import) VALUES('" + fact.numAlbaran +
+                "'," + fact.idLocalidad +
+                "," + fact.idCliente + " " +
+                ",'" + fact.matricula +
+                "', " + fact.importe + " )";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+            return true;
+        }
     }
 }

@@ -50,12 +50,19 @@
     <Compile Include="Conexion\IRepo.cs" />
     <Compile Include="CrearUsuario\CrearUsuarioPresenter.cs" />
     <Compile Include="CrearUsuario\ICrearUsuarioPresenter.cs" />
+    <Compile Include="Facturas\FacturasView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturas\FacturasView.Designer.cs">
+      <DependentUpon>FacturasView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal\MenuPrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuPrincipal\MenuPrincipalForm.Designer.cs">
       <DependentUpon>MenuPrincipalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Factura.cs" />
     <Compile Include="Utils\ValidacionesUtils.cs" />
     <Compile Include="CrearUsuario\CrearUsuarioView.cs">
       <SubType>Form</SubType>
