@@ -1,5 +1,6 @@
 ﻿using Aplicaciono.Conexion;
 using Aplicaciono.CrearUsuario;
+using Aplicaciono.MenuPrincipal;
 using Aplicaciono.Modelos;
 using System;
 using System.Data.SqlClient;
@@ -40,10 +41,8 @@ namespace Aplicaciono.Splash
         {
             if (usuario.dni != null)
             {
-                Console.WriteLine("No es nulo");
-                return;
-
-                //cargar pantalla de menu
+                MenuPrincipalForm menu = new MenuPrincipalForm();
+                menu.ShowDialog();
             }
             CrearUsuarioView crearUsuario = new CrearUsuarioView();
             crearUsuario.ShowDialog();
