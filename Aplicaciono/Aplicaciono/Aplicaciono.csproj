@@ -83,6 +83,9 @@
     <EmbeddedResource Include="CrearUsuario\CrearUsuarioView.resx">
       <DependentUpon>CrearUsuarioView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Facturas\FacturasView.resx">
+      <DependentUpon>FacturasView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Splash\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

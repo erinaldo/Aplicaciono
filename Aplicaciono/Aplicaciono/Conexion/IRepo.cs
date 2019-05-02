@@ -9,5 +9,6 @@ namespace Aplicaciono.Conexion
         void CerrarConexion(SqlConnection con);
         Usuario LeerUsuario(SqlConnection con);
         bool GuardarUsuario(SqlConnection con, Usuario user);
+        Factura MostrarFacturas(SqlConnection con);
     }
 }

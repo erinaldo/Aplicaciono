@@ -78,5 +78,27 @@ namespace Aplicaciono.Conexion
             }
             return true;
         }
+
+        public Factura MostrarFacturas(SqlConnection con)
+        {
+            Factura matchingPerson = new Factura();
+            using (con)
+            {
+                string oString = "Select * from Albaranes";
+                SqlCommand oCmd = new SqlCommand(oString, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        matchingPerson.numAlbaran = oReader["NumAlbaran"].ToString();
+                        matchingPerson.idCliente = oReader["IdLocalidad"].ToString();
+                        matchingPerson.idCliente = oReader["IdCliente"].ToString();
+                        matchingPerson.matricula = oReader["Matricula"].ToString();
+                        matchingPerson.matricula = oReader["Import"].ToString();
+                    }
+                }
+            }
+            return matchingPerson;
+        }
     }
 }

@@ -1,27 +1,22 @@
 ﻿using Aplicaciono.Conexion;
 using Aplicaciono.Modelos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Aplicaciono.Facturas
 {
     public partial class FacturasView : Form
     {
+        SqlConnection con;
+        IRepo repo;
         public FacturasView()
         {
             InitializeComponent();
         }
         private void btnImprimir_Click(object sender, System.EventArgs e)
         {
-            Guardarfacturas();
+            avisoGuardar();
         }
 
         private void btnGuardar_Click(object sender, System.EventArgs e)
@@ -47,6 +42,29 @@ namespace Aplicaciono.Facturas
                 }
             }
             return true;
+        }
+
+        public void avisoGuardar()
+        {
+            DialogResult result = MessageBox.Show("¿Has guardado las facturas?", "Imprimir", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                Conexione repo = new Conexione();
+                con = repo.AbrirConexion();
+                try
+                {
+                    Factura user = repo.MostrarFacturas(con);
+                }
+                catch (InvalidCastException e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+                repo.CerrarConexion(con);
+            }
+            else if (result == DialogResult.No)
+            {
+            }
         }
     }
 }
