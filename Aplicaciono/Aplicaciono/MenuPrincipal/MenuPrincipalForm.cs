@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aplicaciono.Facturas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,8 @@ namespace Aplicaciono.MenuPrincipal
 
         private void btnGenerarFact_Click(object sender, System.EventArgs e)
         {
-
+            FacturasView fact = new FacturasView();
+            fact.ShowDialog();
         }
 
         private void btnGenerarGastos_Click(object sender, System.EventArgs e)
