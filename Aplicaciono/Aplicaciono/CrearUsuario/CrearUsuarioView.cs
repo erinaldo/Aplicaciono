@@ -1,5 +1,6 @@
 ﻿using Aplicaciono.Conexion;
 using Aplicaciono.Modelos;
+using Aplicaciono.Utils;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -12,13 +13,24 @@ namespace Aplicaciono.CrearUsuario
         SqlConnection con;
         ICrearUsuarioPresenter presenter;
         Usuario usuario;
-        public CrearUsuarioView()
+        public CrearUsuarioView(bool tipo)
         {
             InitializeComponent();
             this.ActiveControl = lbldni;
             repo = new Conexione();
-            presenter = new CrearUsuarioPresenter(this, repo);
+            presenter = new CrearUsuarioPresenter(this, repo, tipo);
             usuario = new Usuario();
+            if (!tipo)
+            {
+                usuario = presenter.cargarDatosUsuario(con);
+                editApellido1.Text = usuario.apellido;
+                editDNI.Text = usuario.dni;
+                editNombre.Text = usuario.nombre;
+                editDireccion.Text = usuario.direccion;
+                editCP.Text = usuario.cp;
+                editCiudad.Text = usuario.ciudad;
+                editProvincia.Text = usuario.provincia;
+            }
         }
 
         private void btGuardar_Click(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aplicaciono.CrearUsuario;
+using Aplicaciono.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,9 +39,10 @@ namespace Aplicaciono.MenuPrincipal
 
         }
 
-        private void button5_Click(object sender, System.EventArgs e)
+        private void btnDatosUsuario_Click(object sender, System.EventArgs e)
         {
-
+            CrearUsuarioView crearUsuario = new CrearUsuarioView(ConstantesGlobales.viejo);
+            crearUsuario.ShowDialog();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Aplicaciono.Conexion;
 using Aplicaciono.Modelos;
+using Aplicaciono.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,11 +19,13 @@ namespace Aplicaciono.CrearUsuario
 
         string mensaje = "¿Estas seguro que quieres cancelar? Esto borrará todo lo que has introducido y cerrará el programa";
         string caption = "Cancelar";
+        bool tipo;
 
-        public CrearUsuarioPresenter(CrearUsuarioView view, Conexione repo)
+        public CrearUsuarioPresenter(CrearUsuarioView view, Conexione repo, bool tipo)
         {
             this.view = view;
             this.repo = repo;
+            this.tipo = tipo;
         }
 
         public bool comprobarCP(CancelEventArgs e, ErrorProvider errorProvider, TextBox editCP)
@@ -111,11 +114,17 @@ namespace Aplicaciono.CrearUsuario
             {
                 con = repo.AbrirConexion();
 
-                if (repo.GuardarUsuario(con, usuario))
+                if (tipo)
                 {
-                    MessageBox.Show("Los datos se han introducido correctamente");
+                    if (repo.GuardarUsuario(con, usuario))
+                    {
+                        MessageBox.Show("Los datos se han introducido correctamente");
+                    }
                 }
-
+                else
+                {
+                   
+                }
                 repo.CerrarConexion(con);
             }
             catch (Exception e)
@@ -125,8 +134,7 @@ namespace Aplicaciono.CrearUsuario
                     MessageBox.Show("No se puede guardar con campos vacios");
                 }
                 MessageBox.Show("No se ha podido realizar una conexión a la base de datos");
-            }
-               
+            }   
         }
 
         public void cancelarClick()
@@ -138,6 +146,15 @@ namespace Aplicaciono.CrearUsuario
             {
                 Application.Exit();
             }
+        }
+
+        public Usuario cargarDatosUsuario(SqlConnection con)
+        {
+            Usuario user = new Usuario();
+            con = repo.AbrirConexion();
+            user = repo.CargarUsuario(con);
+            repo.CerrarConexion(con);
+            return user;
         }
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="MenuPrincipal\MenuPrincipalForm.Designer.cs">
       <DependentUpon>MenuPrincipalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ConstantesGlobales.cs" />
     <Compile Include="Utils\ValidacionesUtils.cs" />
     <Compile Include="CrearUsuario\CrearUsuarioView.cs">
       <SubType>Form</SubType>
