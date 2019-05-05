@@ -1,4 +1,5 @@
 ﻿using Aplicaciono.Modelos;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace Aplicaciono.Conexion
@@ -9,6 +10,6 @@ namespace Aplicaciono.Conexion
         void CerrarConexion(SqlConnection con);
         Usuario LeerUsuario(SqlConnection con);
         bool GuardarUsuario(SqlConnection con, Usuario user);
-        Factura MostrarFacturas(SqlConnection con);
+        List<Factura> MostrarFacturas(SqlConnection con);
     }
 }

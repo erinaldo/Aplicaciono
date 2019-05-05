@@ -1,6 +1,7 @@
 ﻿using Aplicaciono.Conexion;
 using Aplicaciono.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -54,7 +55,7 @@ namespace Aplicaciono.Facturas
                 con = repo.AbrirConexion();
                 try
                 {
-                    Factura user = repo.MostrarFacturas(con);
+                    List<Factura> user = repo.MostrarFacturas(con);
                 }
                 catch (InvalidCastException e)
                 {

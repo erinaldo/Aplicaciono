@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Aplicaciono.Modelos;
@@ -79,9 +80,9 @@ namespace Aplicaciono.Conexion
             return true;
         }
 
-        public Factura MostrarFacturas(SqlConnection con)
+        public List<Factura> MostrarFacturas(SqlConnection con)
         {
-            Factura matchingPerson = new Factura();
+            List<Factura> listaFacturas = new List<Factura>();
             using (con)
             {
                 string oString = "Select * from Albaranes";
@@ -90,15 +91,17 @@ namespace Aplicaciono.Conexion
                 {
                     while (oReader.Read())
                     {
-                        matchingPerson.numAlbaran = oReader["NumAlbaran"].ToString();
-                        matchingPerson.idCliente = oReader["IdLocalidad"].ToString();
-                        matchingPerson.idCliente = oReader["IdCliente"].ToString();
-                        matchingPerson.matricula = oReader["Matricula"].ToString();
-                        matchingPerson.matricula = oReader["Import"].ToString();
+                        Factura fact = new Factura();
+                        fact.numAlbaran = oReader["NumAlbaran"].ToString();
+                        fact.idCliente = oReader["IdLocalidad"].ToString();
+                        fact.idCliente = oReader["IdCliente"].ToString();
+                        fact.matricula = oReader["Matricula"].ToString();
+                        fact.matricula = oReader["Import"].ToString();
+                        listaFacturas.Add(fact);
                     }
                 }
             }
-            return matchingPerson;
+            return listaFacturas;
         }
     }
 }
