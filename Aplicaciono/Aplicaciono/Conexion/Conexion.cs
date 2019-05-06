@@ -83,5 +83,25 @@ namespace Aplicaciono.Conexion
             }
             return matchingPerson;
         }
+
+        public bool ModificarUsuario(SqlConnection con, Usuario user)
+        {
+            using (con)
+            {
+                string sql = "update usuario set " +
+                    "dni='" + user.dni + 
+                    "', nombre='" + user.nombre + 
+                    "', apellido='" + user.apellido +
+                    "', direccion='" + user.direccion + 
+                    "', cp='" + user.cp + 
+                    "', ciudad='" + user.ciudad + 
+                    "', provincia='" + user.provincia + "'";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
     }
 }

@@ -123,7 +123,10 @@ namespace Aplicaciono.CrearUsuario
                 }
                 else
                 {
-                   
+                    if(repo.ModificarUsuario(con, usuario))
+                    {
+                        MessageBox.Show("Los datos se han modificado correctamente");
+                    } 
                 }
                 repo.CerrarConexion(con);
             }
