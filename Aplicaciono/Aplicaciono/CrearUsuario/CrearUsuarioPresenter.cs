@@ -20,6 +20,7 @@ namespace Aplicaciono.CrearUsuario
         string mensaje = "¿Estas seguro que quieres cancelar? Esto borrará todo lo que has introducido y cerrará el programa";
         string caption = "Cancelar";
         bool tipo;
+        bool validaciones = false;
 
         public CrearUsuarioPresenter(CrearUsuarioView view, Conexione repo, bool tipo)
         {
@@ -108,36 +109,63 @@ namespace Aplicaciono.CrearUsuario
             throw new NotImplementedException();
         }
 
-        public void guardarClick(Usuario usuario, SqlConnection con)
+        public bool guardarClick(Usuario usuario, SqlConnection con)
         {
-            try
+            validaciones = validacionesCorrectas(usuario);
+            if (validaciones)
             {
-                con = repo.AbrirConexion();
-
-                if (tipo)
+                try
                 {
-                    if (repo.GuardarUsuario(con, usuario))
+                    con = repo.AbrirConexion();
+                    if (tipo)
                     {
-                        MessageBox.Show("Los datos se han introducido correctamente");
+                        if (repo.GuardarUsuario(con, usuario))
+                        {
+                            MessageBox.Show("Los datos se han introducido correctamente");
+                        }
                     }
-                }
-                else
-                {
-                    if(repo.ModificarUsuario(con, usuario))
+                    else
                     {
-                        MessageBox.Show("Los datos se han modificado correctamente");
-                    } 
+                        if (repo.ModificarUsuario(con, usuario))
+                        {
+                            MessageBox.Show("Los datos se han modificado correctamente");
+                        }
+                    }
+                    repo.CerrarConexion(con);
+                    return true;
                 }
-                repo.CerrarConexion(con);
-            }
-            catch (Exception e)
-            {
-                if (e is ArgumentNullException)
+                catch (Exception e)
                 {
-                    MessageBox.Show("No se puede guardar con campos vacios");
+                    if (e is ArgumentNullException)
+                    {
+                        MessageBox.Show("No se puede guardar con campos vacios");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido realizar una conexión a la base de datos");
+                    }
+                    repo.CerrarConexion(con);
                 }
-                MessageBox.Show("No se ha podido realizar una conexión a la base de datos");
-            }   
+                return false;
+            }
+            else
+            {
+                MessageBox.Show("No puedes guardar campos vacios");
+            }
+            return false;
+        }
+
+        private bool validacionesCorrectas(Usuario usuario)
+        {
+            validaciones = true;
+            validaciones = validaciones && ValidacionesUtils.ValidarDni(usuario.dni);
+            validaciones = validaciones && ValidacionesUtils.ValidarCodigoPostal(usuario.cp);
+            validaciones = validaciones && ValidacionesUtils.ValidarDireccion(usuario.direccion);
+            validaciones = validaciones && ValidacionesUtils.ValidarPalabras(usuario.nombre);
+            validaciones = validaciones && ValidacionesUtils.ValidarPalabras(usuario.apellido);
+            validaciones = validaciones && ValidacionesUtils.ValidarPalabras(usuario.ciudad);
+            validaciones = validaciones && ValidacionesUtils.ValidarPalabras(usuario.provincia);
+            return validaciones;
         }
 
         public void cancelarClick()

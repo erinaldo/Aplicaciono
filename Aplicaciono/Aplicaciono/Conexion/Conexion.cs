@@ -77,7 +77,7 @@ namespace Aplicaciono.Conexion
                         matchingPerson.direccion = oReader["direccion"].ToString();
                         matchingPerson.cp = oReader["cp"].ToString();
                         matchingPerson.ciudad = oReader["ciudad"].ToString();
-                        matchingPerson.provincia = oReader["nombre"].ToString();
+                        matchingPerson.provincia = oReader["provincia"].ToString();
                     }
                 }
             }
@@ -103,5 +103,6 @@ namespace Aplicaciono.Conexion
             }
             return true;
         }
+
     }
 }
