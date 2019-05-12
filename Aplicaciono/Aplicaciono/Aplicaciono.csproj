@@ -77,6 +77,9 @@
     <EmbeddedResource Include="CrearUsuario\CrearUsuarioView.resx">
       <DependentUpon>CrearUsuarioView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal\MenuPrincipalForm.resx">
+      <DependentUpon>MenuPrincipalForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Splash\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
