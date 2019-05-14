@@ -1,5 +1,6 @@
 ﻿using Aplicaciono.Conexion;
 using Aplicaciono.Modelos;
+using Aplicaciono.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,11 +19,14 @@ namespace Aplicaciono.CrearUsuario
 
         string mensaje = "¿Estas seguro que quieres cancelar? Esto borrará todo lo que has introducido y cerrará el programa";
         string caption = "Cancelar";
+        bool tipo;
+        bool validaciones = false;
 
-        public CrearUsuarioPresenter(CrearUsuarioView view, Conexione repo)
+        public CrearUsuarioPresenter(CrearUsuarioView view, Conexione repo, bool tipo)
         {
             this.view = view;
             this.repo = repo;
+            this.tipo = tipo;
         }
 
         public bool comprobarCP(CancelEventArgs e, ErrorProvider errorProvider, TextBox editCP)
@@ -105,28 +109,63 @@ namespace Aplicaciono.CrearUsuario
             throw new NotImplementedException();
         }
 
-        public void guardarClick(Usuario usuario, SqlConnection con)
+        public bool guardarClick(Usuario usuario, SqlConnection con)
         {
-            try
+            validaciones = validacionesCorrectas(usuario);
+            if (validaciones)
             {
-                con = repo.AbrirConexion();
-
-                if (repo.GuardarUsuario(con, usuario))
+                try
                 {
-                    MessageBox.Show("Los datos se han introducido correctamente");
+                    con = repo.AbrirConexion();
+                    if (tipo)
+                    {
+                        if (repo.GuardarUsuario(con, usuario))
+                        {
+                            MessageBox.Show("Los datos se han introducido correctamente");
+                        }
+                    }
+                    else
+                    {
+                        if (repo.ModificarUsuario(con, usuario))
+                        {
+                            MessageBox.Show("Los datos se han modificado correctamente");
+                        }
+                    }
+                    repo.CerrarConexion(con);
+                    return true;
                 }
-
-                repo.CerrarConexion(con);
+                catch (Exception e)
+                {
+                    if (e is ArgumentNullException)
+                    {
+                        MessageBox.Show("No se puede guardar con campos vacios");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido realizar una conexión a la base de datos");
+                    }
+                    repo.CerrarConexion(con);
+                }
+                return false;
             }
-            catch (Exception e)
+            else
             {
-                if (e is ArgumentNullException)
-                {
-                    MessageBox.Show("No se puede guardar con campos vacios");
-                }
-                MessageBox.Show("No se ha podido realizar una conexión a la base de datos");
+                MessageBox.Show("No puedes guardar campos vacios");
             }
-               
+            return false;
+        }
+
+        private bool validacionesCorrectas(Usuario usuario)
+        {
+            validaciones = true;
+            validaciones = validaciones && ValidacionesUtils.ValidarDni(usuario.dni);
+            validaciones = validaciones && ValidacionesUtils.ValidarCodigoPostal(usuario.cp);
+            validaciones = validaciones && ValidacionesUtils.ValidarDireccion(usuario.direccion);
+            validaciones = validaciones && ValidacionesUtils.ValidarPalabras(usuario.nombre);
+            validaciones = validaciones && ValidacionesUtils.ValidarPalabras(usuario.apellido);
+            validaciones = validaciones && ValidacionesUtils.ValidarPalabras(usuario.ciudad);
+            validaciones = validaciones && ValidacionesUtils.ValidarPalabras(usuario.provincia);
+            return validaciones;
         }
 
         public void cancelarClick()
@@ -138,6 +177,15 @@ namespace Aplicaciono.CrearUsuario
             {
                 Application.Exit();
             }
+        }
+
+        public Usuario cargarDatosUsuario(SqlConnection con)
+        {
+            Usuario user = new Usuario();
+            con = repo.AbrirConexion();
+            user = repo.CargarUsuario(con);
+            repo.CerrarConexion(con);
+            return user;
         }
     }
 }

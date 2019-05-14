@@ -1,5 +1,6 @@
 ﻿using Aplicaciono.Conexion;
 using Aplicaciono.Modelos;
+using Aplicaciono.Utils;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -12,18 +13,33 @@ namespace Aplicaciono.CrearUsuario
         SqlConnection con;
         ICrearUsuarioPresenter presenter;
         Usuario usuario;
-        public CrearUsuarioView()
+        public CrearUsuarioView(bool tipo)
         {
             InitializeComponent();
             this.ActiveControl = lbldni;
             repo = new Conexione();
-            presenter = new CrearUsuarioPresenter(this, repo);
+            presenter = new CrearUsuarioPresenter(this, repo, tipo);
             usuario = new Usuario();
+            if (!tipo)
+            {
+                usuario = presenter.cargarDatosUsuario(con);
+                editApellido1.Text = usuario.apellido;
+                editDNI.Text = usuario.dni;
+                editNombre.Text = usuario.nombre;
+                editDireccion.Text = usuario.direccion;
+                editCP.Text = usuario.cp;
+                editCiudad.Text = usuario.ciudad;
+                editProvincia.Text = usuario.provincia;
+            }
         }
 
         private void btGuardar_Click(object sender, EventArgs e)
         {
-            presenter.guardarClick(usuario, con);
+            bool close = presenter.guardarClick(usuario, con);
+            if (close)
+            {
+                this.Close();
+            }
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
@@ -37,6 +53,10 @@ namespace Aplicaciono.CrearUsuario
             {
                 usuario.dni = editDNI.Text;
             }
+            else
+            {
+                usuario.dni = "";
+            }
         }
 
         private void editNombre_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -44,6 +64,10 @@ namespace Aplicaciono.CrearUsuario
             if (presenter.comprobarPalabras(e, errorProvider1, editNombre))
             {
                 usuario.nombre = editNombre.Text;
+            }
+            else
+            {
+                usuario.nombre = "";
             }
         }
 
@@ -53,6 +77,10 @@ namespace Aplicaciono.CrearUsuario
             {
                 usuario.apellido = editApellido1.Text;
             }
+            else
+            {
+                usuario.apellido = "";
+            }
         }
 
         private void editDireccion_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -60,6 +88,10 @@ namespace Aplicaciono.CrearUsuario
             if(presenter.comprobarDireccion(e, errorProvider1, editDireccion))
             {
                 usuario.direccion = editDireccion.Text;
+            }
+            else
+            {
+                usuario.direccion = "";
             }
         }
 
@@ -69,6 +101,10 @@ namespace Aplicaciono.CrearUsuario
             {
                 usuario.cp = editCP.Text;
             }
+            else
+            {
+                usuario.cp = "";
+            }
         }
 
         private void editCiudad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -77,6 +113,10 @@ namespace Aplicaciono.CrearUsuario
             {
                 usuario.ciudad = editCiudad.Text;
             }
+            else
+            {
+                usuario.ciudad = "";
+            }
         }
 
         private void editProvincia_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -84,6 +124,10 @@ namespace Aplicaciono.CrearUsuario
             if(presenter.comprobarPalabras(e, errorProvider1, editProvincia))
             {
                 usuario.provincia = editProvincia.Text;
+            }
+            else
+            {
+                usuario.provincia = "";
             }
         }
     }

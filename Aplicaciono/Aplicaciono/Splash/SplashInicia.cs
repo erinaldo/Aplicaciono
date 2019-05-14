@@ -2,6 +2,7 @@
 using Aplicaciono.CrearUsuario;
 using Aplicaciono.MenuPrincipal;
 using Aplicaciono.Modelos;
+using Aplicaciono.Utils;
 using System;
 using System.Data.SqlClient;
 
@@ -43,9 +44,11 @@ namespace Aplicaciono.Splash
             {
                 MenuPrincipalForm menu = new MenuPrincipalForm();
                 menu.ShowDialog();
+            } else
+            {
+                CrearUsuarioView crearUsuario = new CrearUsuarioView(ConstantesGlobales.nuevo);
+                crearUsuario.ShowDialog();
             }
-            CrearUsuarioView crearUsuario = new CrearUsuarioView();
-            crearUsuario.ShowDialog();
         }
     }
 }

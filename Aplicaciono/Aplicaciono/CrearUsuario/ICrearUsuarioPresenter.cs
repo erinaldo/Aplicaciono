@@ -15,7 +15,8 @@ namespace Aplicaciono.CrearUsuario
         bool comprobarPalabras(System.ComponentModel.CancelEventArgs e, ErrorProvider errorProvider, TextBox editPalabra);
         bool comprobarCP(System.ComponentModel.CancelEventArgs e, ErrorProvider errorProvider, TextBox editCP);
         bool comprobarDireccion(System.ComponentModel.CancelEventArgs e, ErrorProvider errorProvider, TextBox editDireccion);
-        void guardarClick(Usuario usuario, SqlConnection con);
+        Usuario cargarDatosUsuario(SqlConnection con);
+        bool guardarClick(Usuario usuario, SqlConnection con);
         void cancelarClick();
     }
 }

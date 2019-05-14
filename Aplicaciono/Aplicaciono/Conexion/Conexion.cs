@@ -50,7 +50,7 @@ namespace Aplicaciono.Conexion
             {
                 string sql = "INSERT INTO Usuario(dni,nombre,apellido,direccion," +
                     "cp, ciudad,provincia) VALUES('" + user.dni + "','" + user.nombre + "','" + user.apellido + "'" +
-                    ",'" + user.direccion + "', '" + int.Parse(user.cp) + "'," +
+                    ",'" + user.direccion + "', '" + user.cp + "'," +
                     " '" + user.ciudad + "', '" + user.provincia + "')";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
@@ -59,5 +59,50 @@ namespace Aplicaciono.Conexion
             }
             return true;
         }
+
+        public Usuario CargarUsuario(SqlConnection con)
+        {
+            Usuario matchingPerson = new Usuario();
+            using (con)
+            {
+                string oString = "Select * from Usuario";
+                SqlCommand oCmd = new SqlCommand(oString, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        matchingPerson.dni = oReader["dni"].ToString();
+                        matchingPerson.nombre = oReader["nombre"].ToString();
+                        matchingPerson.apellido = oReader["apellido"].ToString();
+                        matchingPerson.direccion = oReader["direccion"].ToString();
+                        matchingPerson.cp = oReader["cp"].ToString();
+                        matchingPerson.ciudad = oReader["ciudad"].ToString();
+                        matchingPerson.provincia = oReader["provincia"].ToString();
+                    }
+                }
+            }
+            return matchingPerson;
+        }
+
+        public bool ModificarUsuario(SqlConnection con, Usuario user)
+        {
+            using (con)
+            {
+                string sql = "update usuario set " +
+                    "dni='" + user.dni + 
+                    "', nombre='" + user.nombre + 
+                    "', apellido='" + user.apellido +
+                    "', direccion='" + user.direccion + 
+                    "', cp='" + user.cp + 
+                    "', ciudad='" + user.ciudad + 
+                    "', provincia='" + user.provincia + "'";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
+
     }
 }
