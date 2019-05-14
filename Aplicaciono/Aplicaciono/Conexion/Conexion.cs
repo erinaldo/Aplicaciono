@@ -104,5 +104,10 @@ namespace Aplicaciono.Conexion
             return true;
         }
 
+        public bool LeerImpuestos(SqlConnection con)
+        {
+
+        }
+
     }
 }
