@@ -69,6 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppGestionDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="AppGestionDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppGestionDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Conexion\IRepo.cs" />
     <Compile Include="CrearUsuario\CrearUsuarioPresenter.cs" />
@@ -79,11 +84,11 @@
     <Compile Include="Facturas\FacturasView.Designer.cs">
       <DependentUpon>FacturasView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Informes\InformeFactura.cs">
+    <Compile Include="Informes\FormularioInformeFactura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Informes\InformeFactura.Designer.cs">
-      <DependentUpon>InformeFactura.cs</DependentUpon>
+    <Compile Include="Informes\FormularioInformeFactura.Designer.cs">
+      <DependentUpon>FormularioInformeFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuPrincipal\MenuPrincipalForm.cs">
       <SubType>Form</SubType>
@@ -117,8 +122,8 @@
     <EmbeddedResource Include="Facturas\FacturasView.resx">
       <DependentUpon>FacturasView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Informes\InformeFactura.resx">
-      <DependentUpon>InformeFactura.cs</DependentUpon>
+    <EmbeddedResource Include="Informes\FormularioInformeFactura.resx">
+      <DependentUpon>FormularioInformeFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Informes\Report1.rdlc" />
     <EmbeddedResource Include="Splash\Form1.resx">
@@ -145,6 +150,17 @@
     <None Include="AppGestionDataSet.xss">
       <DependentUpon>AppGestionDataSet.xsd</DependentUpon>
     </None>
+    <None Include="AppGestionDataSet1.xsc">
+      <DependentUpon>AppGestionDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="AppGestionDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AppGestionDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AppGestionDataSet1.xss">
+      <DependentUpon>AppGestionDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -157,7 +173,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

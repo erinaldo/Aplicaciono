@@ -1,6 +1,6 @@
 ﻿namespace Aplicaciono.Informes
 {
-    partial class InformeFactura
+    partial class FormularioInformeFactura
     {
         /// <summary>
         /// Required designer variable.
@@ -33,21 +33,22 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.Location = new System.Drawing.Point(0, -2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Aplicaciono.Informes.Report1.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(12, 12);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(799, 451);
-            this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.Size = new System.Drawing.Size(799, 369);
+            this.reportViewer1.TabIndex = 1;
             // 
-            // InformeFactura
+            // FormularioInformeFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(815, 450);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "InformeFactura";
-            this.Text = "InformeFactura";
-            this.Load += new System.EventHandler(this.InformeFactura_Load);
+            this.Name = "FormularioInformeFactura";
+            this.Text = "FormularioInformeFactura";
+            this.Load += new System.EventHandler(this.FormularioInformeFactura_Load);
             this.ResumeLayout(false);
 
         }

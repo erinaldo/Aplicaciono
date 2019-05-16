@@ -1,4 +1,5 @@
 ﻿using Aplicaciono.Conexion;
+using Aplicaciono.Informes;
 using Aplicaciono.Modelos;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,8 @@ namespace Aplicaciono.Facturas
         }
         private void btnImprimir_Click(object sender, System.EventArgs e)
         {
-            avisoGuardar();
+            FormularioInformeFactura frm = new FormularioInformeFactura();
+            frm.Show();
         }
 
         private void btnGuardar_Click(object sender, System.EventArgs e)
