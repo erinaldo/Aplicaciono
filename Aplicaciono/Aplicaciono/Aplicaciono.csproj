@@ -50,12 +50,14 @@
     <Compile Include="Conexion\IRepo.cs" />
     <Compile Include="CrearUsuario\CrearUsuarioPresenter.cs" />
     <Compile Include="CrearUsuario\ICrearUsuarioPresenter.cs" />
+    <Compile Include="GestionImpuestos\GestionImpuestosPresenter.cs" />
     <Compile Include="GestionImpuestos\GestionImpuestosView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GestionImpuestos\GestionImpuestosView.Designer.cs">
       <DependentUpon>GestionImpuestosView.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionImpuestos\IGestionImpuestosPresenter.cs" />
     <Compile Include="MenuPrincipal\MenuPrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>

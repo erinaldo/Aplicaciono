@@ -106,7 +106,22 @@ namespace Aplicaciono.Conexion
 
         public bool LeerImpuestos(SqlConnection con)
         {
-
+            Impuestos impuestos = new Impuestos();
+            using (con)
+            {
+                string query = "select * from Impuestos";
+                SqlCommand oCmd = new SqlCommand(query, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        impuestos.dni = oReader["dni"].ToString();
+                        impuestos.iva = Convert.ToInt32(oReader["iva"]);
+                        impuestos.irpf = Convert.ToInt32(oReader["irpf"]);
+                    }
+                }
+            }
+            return true;
         }
 
     }

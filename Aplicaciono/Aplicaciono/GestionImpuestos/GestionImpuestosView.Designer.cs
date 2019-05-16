@@ -32,6 +32,8 @@
             this.tbIva = new System.Windows.Forms.TextBox();
             this.lblIrpf = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblIva
@@ -49,6 +51,7 @@
             this.tbIva.Name = "tbIva";
             this.tbIva.Size = new System.Drawing.Size(100, 20);
             this.tbIva.TabIndex = 1;
+            this.tbIva.Validating += new System.ComponentModel.CancelEventHandler(this.ValidarIva);
             // 
             // lblIrpf
             // 
@@ -65,12 +68,35 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.ValidarIrpf);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(66, 110);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Location = new System.Drawing.Point(147, 110);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 5;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.BtnAceptar);
             // 
             // GestionImpuestosView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 115);
+            this.ClientSize = new System.Drawing.Size(234, 145);
+            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblIrpf);
             this.Controls.Add(this.tbIva);
@@ -88,5 +114,7 @@
         private System.Windows.Forms.TextBox tbIva;
         private System.Windows.Forms.Label lblIrpf;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAceptar;
     }
 }
