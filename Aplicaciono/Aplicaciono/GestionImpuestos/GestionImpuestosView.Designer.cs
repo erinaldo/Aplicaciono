@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblIva = new System.Windows.Forms.Label();
             this.tbIva = new System.Windows.Forms.TextBox();
             this.lblIrpf = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbIrpf = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblIva
@@ -62,13 +65,13 @@
             this.lblIrpf.TabIndex = 2;
             this.lblIrpf.Text = "IRPF";
             // 
-            // textBox1
+            // tbIrpf
             // 
-            this.textBox1.Location = new System.Drawing.Point(73, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.ValidarIrpf);
+            this.tbIrpf.Location = new System.Drawing.Point(73, 63);
+            this.tbIrpf.Name = "tbIrpf";
+            this.tbIrpf.Size = new System.Drawing.Size(100, 20);
+            this.tbIrpf.TabIndex = 3;
+            this.tbIrpf.TextChanged += new System.EventHandler(this.ValidarIrpf);
             // 
             // btnCancelar
             // 
@@ -90,6 +93,10 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.BtnAceptar);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // GestionImpuestosView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,12 +104,13 @@
             this.ClientSize = new System.Drawing.Size(234, 145);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbIrpf);
             this.Controls.Add(this.lblIrpf);
             this.Controls.Add(this.tbIva);
             this.Controls.Add(this.lblIva);
             this.Name = "GestionImpuestosView";
             this.Text = "Gestionar Impuestos";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,8 +121,9 @@
         private System.Windows.Forms.Label lblIva;
         private System.Windows.Forms.TextBox tbIva;
         private System.Windows.Forms.Label lblIrpf;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbIrpf;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

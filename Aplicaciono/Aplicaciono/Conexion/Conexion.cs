@@ -124,5 +124,20 @@ namespace Aplicaciono.Conexion
             return true;
         }
 
+        public bool GuardarImpuestos(SqlConnection con, Impuestos impuestos)
+        {
+            using (con)
+            {
+                string sql = "update impuestos set " +
+                    "dni='" + impuestos.dni +
+                    "', iva='" + impuestos.iva +
+                    "', irpf='" + impuestos.irpf + "'";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
     }
 }

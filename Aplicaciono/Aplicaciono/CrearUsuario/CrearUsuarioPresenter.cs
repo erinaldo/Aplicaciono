@@ -175,7 +175,7 @@ namespace Aplicaciono.CrearUsuario
             result = MessageBox.Show(mensaje, caption, messageBoxButtons);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                Application.Exit();
+                view.Close();
             }
         }
 

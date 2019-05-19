@@ -31,7 +31,11 @@ namespace Aplicaciono.GestionImpuestos
 
         private void BtnAceptar(object sender, EventArgs e)
         {
-            
+            bool close = presenter.guardarClick(impuestos, con);
+            if (close)
+            {
+                this.Close();
+            }
         }
 
         private void BtnCancelar(object sender, EventArgs e)
@@ -41,12 +45,26 @@ namespace Aplicaciono.GestionImpuestos
 
         private void ValidarIva(object sender, CancelEventArgs e)
         {
-
+            if (presenter.comprobarImpuestos(e, errorProvider1, tbIva))
+            {
+                impuestos.iva = Convert.ToDecimal(tbIva.Text);
+            }
+            else
+            {
+                impuestos.iva = 0;
+            }
         }
 
-        private void ValidarIrpf(object sender, EventArgs e)
+        private void ValidarIrpf(object sender, CancelEventArgs e)
         {
-
+            if (presenter.comprobarImpuestos(e, errorProvider1, tbIrpf))
+            {
+                impuestos.irpf = Convert.ToDecimal(tbIrpf.Text);
+            }
+            else
+            {
+                impuestos.irpf = 0;
+            }
         }
     }
 }
