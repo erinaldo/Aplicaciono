@@ -9,7 +9,7 @@ namespace Aplicaciono.CrearUsuario
         private static string valNombre = @"^([A-ZÁÉÍÓÚ]+[\s]*)+$";
         private static string valDireccion = @"^([A-ZÁÉÍÓÚ,0-9]+[\s]*)+$";
         private static string valCP = @"^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$";
-        private static string valImpuestos = @"^([0-9]?[0-9](\.\d+)?|[100](\.0+)?)$";
+        private static string valImpuestos = @"^([0-9]?[0-9](\,\d+)?|[100](\.0+)?)$";
         private static Match match;
         private static Match match2;
 

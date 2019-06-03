@@ -66,7 +66,7 @@ namespace Aplicaciono.GestionImpuestos
                 try
                 {
                     con = repo.AbrirConexion();
-                    if (repo(con, impuestos))
+                    if (repo.GuardarImpuestos(con, impuestos))
                     {
                         MessageBox.Show("Los datos se han introducido correctamente");
                     }
@@ -99,10 +99,23 @@ namespace Aplicaciono.GestionImpuestos
         private bool validacionesCorrectas(Impuestos impuestos)
         {
             validaciones = true;
-            validaciones = validaciones && ValidacionesUtils.ValidarDni(impuestos.dni);
             validaciones = validaciones && ValidacionesUtils.ValidarImpuestos(impuestos.iva.ToString());
             validaciones = validaciones && ValidacionesUtils.ValidarImpuestos(impuestos.irpf.ToString());
             return validaciones;
+        }
+
+        public Impuestos cargarImpuestos(SqlConnection con)
+        {
+            Impuestos impuestos = new Impuestos();
+            con = repo.AbrirConexion();
+            impuestos = repo.LeerImpuestos(con);
+            repo.CerrarConexion(con);
+            return impuestos;
+        }
+
+        public Impuestos comprobarImpuestos(Conexione con)
+        {
+            throw new NotImplementedException();
         }
     }
 }

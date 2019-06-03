@@ -26,7 +26,12 @@ namespace Aplicaciono.GestionImpuestos
             this.ActiveControl = btnAceptar;
             repo = new Conexione();
             presenter = new GestionImpuestosPresenter(this, repo);
-            impuestos = new Impuestos();
+            impuestos = presenter.cargarImpuestos(con);
+            if(impuestos != null)
+            {
+                tbIva.Text = impuestos.iva.ToString();
+                tbIrpf.Text = impuestos.irpf.ToString();
+            }
         }
 
         private void BtnAceptar(object sender, EventArgs e)
@@ -46,24 +51,24 @@ namespace Aplicaciono.GestionImpuestos
         private void ValidarIva(object sender, CancelEventArgs e)
         {
             if (presenter.comprobarImpuestos(e, errorProvider1, tbIva))
-            {
-                impuestos.iva = Convert.ToDecimal(tbIva.Text);
+            { 
+                impuestos.iva = tbIva.Text;
             }
             else
             {
-                impuestos.iva = 0;
+                impuestos.iva = "0";
             }
         }
 
-        private void ValidarIrpf(object sender, CancelEventArgs e)
+        private void validarIrpf(object sender, CancelEventArgs e)
         {
             if (presenter.comprobarImpuestos(e, errorProvider1, tbIrpf))
             {
-                impuestos.irpf = Convert.ToDecimal(tbIrpf.Text);
+                impuestos.irpf = tbIrpf.Text;
             }
             else
             {
-                impuestos.irpf = 0;
+                impuestos.irpf = "0";
             }
         }
     }

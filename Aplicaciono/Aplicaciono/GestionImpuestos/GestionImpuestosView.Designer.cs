@@ -71,7 +71,7 @@
             this.tbIrpf.Name = "tbIrpf";
             this.tbIrpf.Size = new System.Drawing.Size(100, 20);
             this.tbIrpf.TabIndex = 3;
-            this.tbIrpf.TextChanged += new System.EventHandler(this.ValidarIrpf);
+            this.tbIrpf.Validating += new System.ComponentModel.CancelEventHandler(this.validarIrpf);
             // 
             // btnCancelar
             // 

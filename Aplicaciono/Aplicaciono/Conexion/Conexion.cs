@@ -104,7 +104,7 @@ namespace Aplicaciono.Conexion
             return true;
         }
 
-        public bool LeerImpuestos(SqlConnection con)
+        public Impuestos LeerImpuestos(SqlConnection con)
         {
             Impuestos impuestos = new Impuestos();
             using (con)
@@ -115,13 +115,12 @@ namespace Aplicaciono.Conexion
                 {
                     while (oReader.Read())
                     {
-                        impuestos.dni = oReader["dni"].ToString();
-                        impuestos.iva = Convert.ToInt32(oReader["iva"]);
-                        impuestos.irpf = Convert.ToInt32(oReader["irpf"]);
+                        impuestos.iva = oReader["iva"].ToString();
+                        impuestos.irpf = oReader["irpf"].ToString();
                     }
                 }
             }
-            return true;
+            return impuestos;
         }
 
         public bool GuardarImpuestos(SqlConnection con, Impuestos impuestos)
@@ -129,8 +128,7 @@ namespace Aplicaciono.Conexion
             using (con)
             {
                 string sql = "update impuestos set " +
-                    "dni='" + impuestos.dni +
-                    "', iva='" + impuestos.iva +
+                    "iva='" + impuestos.iva +
                     "', irpf='" + impuestos.irpf + "'";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

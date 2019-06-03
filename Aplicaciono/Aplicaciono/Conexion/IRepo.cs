@@ -9,6 +9,8 @@ namespace Aplicaciono.Conexion
         void CerrarConexion(SqlConnection con);
         Usuario LeerUsuario(SqlConnection con);
         bool GuardarUsuario(SqlConnection con, Usuario user);
-        bool LeerImpuestos(SqlConnection con);
+        bool ModificarUsuario(SqlConnection con, Usuario user);
+        Impuestos LeerImpuestos(SqlConnection con);
+        bool GuardarImpuestos(SqlConnection con, Impuestos impuestos);
     }
 }

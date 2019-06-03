@@ -8,13 +8,11 @@ namespace Aplicaciono.Modelos
 {
     class Impuestos
     {
-        public string dni { get; set; }
-        public decimal iva { get; set; }
-        public decimal irpf { get; set; }
+        public string iva { get; set; }
+        public string irpf { get; set; }
 
-        public Impuestos(string dni, decimal iva, decimal irpf)
+        public Impuestos(string iva, string irpf)
         {
-            this.dni = dni;
             this.iva = iva;
             this.irpf = irpf;
         }
