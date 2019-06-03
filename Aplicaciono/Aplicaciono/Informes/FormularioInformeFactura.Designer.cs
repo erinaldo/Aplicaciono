@@ -28,27 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.appGestionDataSet = new Aplicaciono.AppGestionDataSet();
+            this.appGestionDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.appGestionDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appGestionDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
+            reportDataSource1.Name = "Facturas";
+            reportDataSource1.Value = this.appGestionDataSetBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Aplicaciono.Informes.Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(12, 12);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(799, 369);
+            this.reportViewer1.Size = new System.Drawing.Size(1167, 681);
             this.reportViewer1.TabIndex = 1;
+            // 
+            // appGestionDataSet
+            // 
+            this.appGestionDataSet.DataSetName = "AppGestionDataSet";
+            this.appGestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // appGestionDataSetBindingSource
+            // 
+            this.appGestionDataSetBindingSource.DataSource = this.appGestionDataSet;
+            this.appGestionDataSetBindingSource.Position = 0;
             // 
             // FormularioInformeFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 450);
+            this.ClientSize = new System.Drawing.Size(1191, 705);
             this.Controls.Add(this.reportViewer1);
             this.Name = "FormularioInformeFactura";
             this.Text = "FormularioInformeFactura";
             this.Load += new System.EventHandler(this.FormularioInformeFactura_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.appGestionDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appGestionDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -56,5 +77,7 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource appGestionDataSetBindingSource;
+        private AppGestionDataSet appGestionDataSet;
     }
 }

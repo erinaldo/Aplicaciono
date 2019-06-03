@@ -38,24 +38,16 @@ namespace Aplicaciono.Informes
         /// </summary>
         private void CargarReporte()
         {
-            Conexione repo = new Conexione();
-            SqlConnection con = repo.AbrirConexion();
-            try
-            {
-                List<Factura> user = repo.MostrarFacturas(con);
-                List<Factura> Agregar = user;
-                ///Mostrar datos en el reporte
-                this.reportViewer1.LocalReport.ReportEmbeddedResource = "Aplicaciono.Informes.Report1.rdlc";
-                ReportDataSource rds1 = new ReportDataSource("Factura", Agregar);
-                this.reportViewer1.LocalReport.DataSources.Clear();
-                this.reportViewer1.LocalReport.DataSources.Add(rds1);
-                this.reportViewer1.RefreshReport();
-            }
-            catch (InvalidCastException e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            repo.CerrarConexion(con);
+            AppGestionDataSet dat = new AppGestionDataSet();
+            string cs = @"Data Source=(localdb)\Servidor;Initial Catalog=AppGestion;Integrated Security=True";
+            SqlConnection cn = new SqlConnection(cs);
+            SqlDataAdapter da = new SqlDataAdapter("select * from Albaranes", cn);
+            da.Fill(dat, dat.Tables[0].TableName);
+
+            ReportDataSource rds = new ReportDataSource("Albaranes", dat.Tables[0]);
+            this.reportViewer1.LocalReport.DataSources.Clear();
+            this.reportViewer1.Refresh();
+
         }
         private void FormularioInformeFactura_Load(object sender, EventArgs e)
         {
