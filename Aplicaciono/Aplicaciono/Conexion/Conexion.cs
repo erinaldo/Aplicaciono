@@ -104,5 +104,38 @@ namespace Aplicaciono.Conexion
             return true;
         }
 
+        public Impuestos LeerImpuestos(SqlConnection con)
+        {
+            Impuestos impuestos = new Impuestos();
+            using (con)
+            {
+                string query = "select * from Impuestos";
+                SqlCommand oCmd = new SqlCommand(query, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        impuestos.iva = oReader["iva"].ToString();
+                        impuestos.irpf = oReader["irpf"].ToString();
+                    }
+                }
+            }
+            return impuestos;
+        }
+
+        public bool GuardarImpuestos(SqlConnection con, Impuestos impuestos)
+        {
+            using (con)
+            {
+                string sql = "update impuestos set " +
+                    "iva='" + impuestos.iva +
+                    "', irpf='" + impuestos.irpf + "'";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
     }
 }

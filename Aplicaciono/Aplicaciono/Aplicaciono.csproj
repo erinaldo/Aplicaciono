@@ -50,12 +50,21 @@
     <Compile Include="Conexion\IRepo.cs" />
     <Compile Include="CrearUsuario\CrearUsuarioPresenter.cs" />
     <Compile Include="CrearUsuario\ICrearUsuarioPresenter.cs" />
+    <Compile Include="GestionImpuestos\GestionImpuestosPresenter.cs" />
+    <Compile Include="GestionImpuestos\GestionImpuestosView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionImpuestos\GestionImpuestosView.Designer.cs">
+      <DependentUpon>GestionImpuestosView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionImpuestos\IGestionImpuestosPresenter.cs" />
     <Compile Include="MenuPrincipal\MenuPrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuPrincipal\MenuPrincipalForm.Designer.cs">
       <DependentUpon>MenuPrincipalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Impuestos.cs" />
     <Compile Include="Utils\ConstantesGlobales.cs" />
     <Compile Include="Utils\ValidacionesUtils.cs" />
     <Compile Include="CrearUsuario\CrearUsuarioView.cs">
@@ -76,6 +85,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CrearUsuario\CrearUsuarioView.resx">
       <DependentUpon>CrearUsuarioView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionImpuestos\GestionImpuestosView.resx">
+      <DependentUpon>GestionImpuestosView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal\MenuPrincipalForm.resx">
       <DependentUpon>MenuPrincipalForm.cs</DependentUpon>

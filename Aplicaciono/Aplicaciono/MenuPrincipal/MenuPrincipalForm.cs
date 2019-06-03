@@ -1,5 +1,6 @@
 ﻿using Aplicaciono.CrearUsuario;
 using Aplicaciono.Utils;
+using Aplicaciono.GestionImpuestos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,9 +35,10 @@ namespace Aplicaciono.MenuPrincipal
 
         }
 
-        private void button4_Click(object sender, System.EventArgs e)
+        private void btnGestionImpuestos_Click(object sender, System.EventArgs e)
         {
-
+            GestionImpuestosView gestionImpuestos = new GestionImpuestosView();
+            gestionImpuestos.ShowDialog();
         }
 
         private void btnDatosUsuario_Click(object sender, System.EventArgs e)
