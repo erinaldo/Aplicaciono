@@ -58,6 +58,12 @@
       <DependentUpon>GestionImpuestosView.cs</DependentUpon>
     </Compile>
     <Compile Include="GestionImpuestos\IGestionImpuestosPresenter.cs" />
+    <Compile Include="GestionClientes\GestionClientesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionClientes\GestionClientesView.Designer.cs">
+      <DependentUpon>GestionClientesView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal\MenuPrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GestionImpuestos\GestionImpuestosView.resx">
       <DependentUpon>GestionImpuestosView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionClientes\GestionClientesView.resx">
+      <DependentUpon>GestionClientesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal\MenuPrincipalForm.resx">
       <DependentUpon>MenuPrincipalForm.cs</DependentUpon>

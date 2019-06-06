@@ -1,6 +1,7 @@
 ﻿using Aplicaciono.CrearUsuario;
 using Aplicaciono.Utils;
 using Aplicaciono.GestionImpuestos;
+using Aplicaciono.GestionUsuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,8 @@ namespace Aplicaciono.MenuPrincipal
 
         private void btnClientes_Click(object sender, System.EventArgs e)
         {
-
+            GestionClientesView gestionClientes = new GestionClientesView();
+            gestionClientes.ShowDialog();
         }
 
         private void btnGestionImpuestos_Click(object sender, System.EventArgs e)
