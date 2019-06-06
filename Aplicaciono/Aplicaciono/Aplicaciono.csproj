@@ -64,6 +64,7 @@
     <Compile Include="MenuPrincipal\MenuPrincipalForm.Designer.cs">
       <DependentUpon>MenuPrincipalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Clientes.cs" />
     <Compile Include="Modelos\Impuestos.cs" />
     <Compile Include="Utils\ConstantesGlobales.cs" />
     <Compile Include="Utils\ValidacionesUtils.cs" />
