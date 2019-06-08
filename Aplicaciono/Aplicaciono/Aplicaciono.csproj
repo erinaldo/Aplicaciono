@@ -50,6 +50,8 @@
     <Compile Include="Conexion\IRepo.cs" />
     <Compile Include="CrearUsuario\CrearUsuarioPresenter.cs" />
     <Compile Include="CrearUsuario\ICrearUsuarioPresenter.cs" />
+    <Compile Include="GestionClientes\GestionClientesPresenter.cs" />
+    <Compile Include="GestionClientes\IGestionImpuestosPresenter.cs" />
     <Compile Include="GestionImpuestos\GestionImpuestosPresenter.cs" />
     <Compile Include="GestionImpuestos\GestionImpuestosView.cs">
       <SubType>Form</SubType>

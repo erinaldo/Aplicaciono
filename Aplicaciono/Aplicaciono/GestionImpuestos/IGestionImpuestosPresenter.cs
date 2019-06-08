@@ -14,7 +14,6 @@ namespace Aplicaciono.GestionImpuestos
     {
         bool comprobarImpuestos(System.ComponentModel.CancelEventArgs e, ErrorProvider errorProvider, TextBox editImpuesto);
         bool guardarClick(Impuestos impuestos, SqlConnection con);
-        Impuestos comprobarImpuestos(Conexione con);
         Impuestos cargarImpuestos(SqlConnection con);
         void cancelarClick();
     }

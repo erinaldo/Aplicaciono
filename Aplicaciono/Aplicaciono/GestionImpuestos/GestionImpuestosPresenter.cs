@@ -112,10 +112,5 @@ namespace Aplicaciono.GestionImpuestos
             repo.CerrarConexion(con);
             return impuestos;
         }
-
-        public Impuestos comprobarImpuestos(Conexione con)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

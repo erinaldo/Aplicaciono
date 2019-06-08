@@ -143,7 +143,7 @@ namespace Aplicaciono.Conexion
         {
             
             List<Clientes> clientes = new List<Clientes>();
-            int i = 0;
+            Clientes cliente = new Clientes();
             using (con)
             {
                 string query = "select * from Clientes";
@@ -152,12 +152,19 @@ namespace Aplicaciono.Conexion
                 {
                     while (oReader.Read())
                     {
-                        clientes[i].id = Int32.Parse(oReader["id"].ToString());
-                        clientes[i].nombre = oReader["nombre"].ToString();
-                        clientes[i].localidad = oReader["localidad"].ToString();
-                        clientes[i].precio = oReader["precio"].ToString();
-                        clientes[i].fecha = oReader["fecha"].ToString();
-                        i++;
+                        /*cliente.id = Int32.Parse(oReader["id"].ToString());
+                        cliente.nombre = oReader["nombre"].ToString();
+                        cliente.localidad = oReader["localidad"].ToString();
+                        cliente.precio = oReader["precio"].ToString();
+                        cliente.fecha = oReader["fecha"].ToString();*/
+                        clientes.Add(new Clientes()
+                        {
+                            id = Int32.Parse(oReader["id"].ToString()),
+                            nombre = oReader["nombre"].ToString(),
+                            localidad = oReader["localidad"].ToString(),
+                            precio = oReader["precio"].ToString(),
+                            fecha = oReader["fecha"].ToString()
+                        });
                     }
                 }
             }
