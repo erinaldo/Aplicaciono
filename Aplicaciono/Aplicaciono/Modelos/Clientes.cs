@@ -8,7 +8,7 @@ namespace Aplicaciono.Modelos
 {
     class Clientes
     {
-        public int id { get; }
+        public int id { get; set; }
         public string nombre { get; set; }
         public string localidad { get; set; }
         public string precio { get; set; }
@@ -29,6 +29,10 @@ namespace Aplicaciono.Modelos
             this.localidad = localidad;
             this.precio = precio;
             this.fecha = fecha;
+        }
+
+        public Clientes()
+        {
         }
     }
 }

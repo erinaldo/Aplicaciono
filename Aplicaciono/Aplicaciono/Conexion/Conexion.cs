@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Aplicaciono.Modelos;
@@ -130,6 +131,79 @@ namespace Aplicaciono.Conexion
                 string sql = "update impuestos set " +
                     "iva='" + impuestos.iva +
                     "', irpf='" + impuestos.irpf + "'";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
+
+        public List<Clientes> LeerClientes(SqlConnection con)
+        {
+            
+            List<Clientes> clientes = new List<Clientes>();
+            int i = 0;
+            using (con)
+            {
+                string query = "select * from Clientes";
+                SqlCommand oCmd = new SqlCommand(query, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        clientes[i].id = Int32.Parse(oReader["id"].ToString());
+                        clientes[i].nombre = oReader["nombre"].ToString();
+                        clientes[i].localidad = oReader["localidad"].ToString();
+                        clientes[i].precio = oReader["precio"].ToString();
+                        clientes[i].fecha = oReader["fecha"].ToString();
+                        i++;
+                    }
+                }
+            }
+            return clientes;
+        }
+
+        public bool NuevoClientes(SqlConnection con, List<Clientes> clientes, int posicion)
+        {
+            using (con)
+            {
+                string sql = "insert into clientes values '" +
+                    clientes[posicion].nombre +
+                    "', '" + clientes[posicion].localidad +
+                    "', '" + clientes[posicion].precio +
+                    "', '" + clientes[posicion].fecha + "'";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
+
+        public bool ModificarCliente(SqlConnection con, List<Clientes> clientes, int posicion)
+        {
+            using (con)
+            {
+                string sql = "update impuestos set nombre = '" +
+                    clientes[posicion].nombre +
+                    "', localidad = '" + clientes[posicion].localidad +
+                    "', precio = '" + clientes[posicion].precio +
+                    "', fecha = '" + clientes[posicion].fecha + 
+                    "' where id = '" + clientes[posicion].id + "'";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
+
+        public bool EliminarCliente(SqlConnection con, List<Clientes> clientes, int posicion)
+        {
+            using (con)
+            {
+                string sql = "delete from impuestos where id = '" + clientes[posicion].id + "'";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.ExecuteNonQuery();
