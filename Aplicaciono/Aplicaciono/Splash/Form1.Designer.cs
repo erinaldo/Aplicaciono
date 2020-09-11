@@ -30,31 +30,33 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Cargando = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 50;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Cargando
+            // progressBar1
             // 
-            this.Cargando.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Cargando.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cargando.Location = new System.Drawing.Point(0, 0);
-            this.Cargando.Name = "Cargando";
-            this.Cargando.Size = new System.Drawing.Size(232, 147);
-            this.Cargando.TabIndex = 0;
-            this.Cargando.Text = "Cargando";
-            this.Cargando.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.Location = new System.Drawing.Point(0, 155);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.progressBar1.Size = new System.Drawing.Size(329, 23);
+            this.progressBar1.TabIndex = 0;
             // 
             // SplashView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(232, 147);
-            this.Controls.Add(this.Cargando);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.BackgroundImage = global::Aplicaciono.Properties.Resources.Penguins;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(329, 178);
+            this.Controls.Add(this.progressBar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SplashView";
             this.Text = "App Gestión";
@@ -65,7 +67,7 @@
         #endregion
 
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label Cargando;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
