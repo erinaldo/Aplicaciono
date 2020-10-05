@@ -12,7 +12,7 @@ namespace Aplicaciono.Conexion
         {
             //la String de conexion se puede conseguir haciendo la base de datos y abriendo view server explorer y propiedades de conexion
             //string infoConexion = @"Data Source=(localdb)\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Security=True";
-            string infoConexion = @"Data Source=DESKTOP-VE9MLFJ\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Security=True";
+            string infoConexion = @"Data Source=DESKTOP-PFPBK7U\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Security=True";
             SqlConnection con = new SqlConnection(infoConexion);
             con.Open();
             return con;
@@ -126,6 +126,69 @@ namespace Aplicaciono.Conexion
                 }
             }
             return listaFacturas;
+        }
+
+        public Factura DatosUltimaFactura(SqlConnection con)
+        {
+            Factura lastFactura = new Factura();
+            using (con)
+            {
+                string oString = "Select TOP 1 * from Facturas order by pkid desc";
+                SqlCommand oCmd = new SqlCommand(oString, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        lastFactura.IRPF = oReader["PorcenIRPF"].ToString();
+                        lastFactura.IVA = oReader["PorcenIVA"].ToString();
+                    }
+                }
+            }
+            return lastFactura;
+        }
+        public List<Factura> FacturasByCliente(SqlConnection con)
+        {
+            List<Factura> listaFacturas = new List<Factura>();
+            using (con)
+            {
+                string oString = "Select Localidad, Cliente, Matricula, Importe from Facturas group by Localidad, Cliente, Matricula, Importe order by Cliente";
+                SqlCommand oCmd = new SqlCommand(oString, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        Factura fact = new Factura();
+                        fact.idLocalidad = oReader["Localidad"].ToString();
+                        fact.idCliente = oReader["Cliente"].ToString();
+                        fact.matricula = oReader["Matricula"].ToString();
+                        fact.importe = oReader["Importe"].ToString();
+                        listaFacturas.Add(fact);
+                    }
+                }
+            }
+            return listaFacturas;
+        }
+
+        public Factura FacturaDeCliente(SqlConnection con, string cliente)
+        {
+            Factura fact = new Factura();
+            using (con)
+            {
+                string oString = "Select Localidad, Cliente, Matricula, Importe from Facturas where Cliente = '"+ cliente + "' order by FechaAlta desc";
+                SqlCommand oCmd = new SqlCommand(oString, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        
+                        fact.idLocalidad = oReader["Localidad"].ToString();
+                        fact.idCliente = oReader["Cliente"].ToString();
+                        fact.matricula = oReader["Matricula"].ToString();
+                        fact.importe = oReader["Importe"].ToString();
+                    }
+                }
+            }
+            return fact;
         }
     }
 }

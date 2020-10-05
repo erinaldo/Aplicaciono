@@ -23,6 +23,7 @@ namespace Aplicaciono.Facturas
         public FacturasView()
         {
             InitializeComponent();
+            loadImpuestos();
         }
 
         private void btnImprimir_Click(object sender, System.EventArgs e)
@@ -53,8 +54,8 @@ namespace Aplicaciono.Facturas
                         txtNumFactura.Text,
                         dataGridView1.Rows[i].Cells[0].Value.ToString(), 
                         dataGridView1.Rows[i].Cells[1].Value.ToString(),
-                        dataGridView1.Rows[i].Cells[2].Value.ToString(),
                         dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                        dataGridView1.Rows[i].Cells[2].Value.ToString(),                        
                         dataGridView1.Rows[i].Cells[4].Value.ToString(),
                         dataGridView1.Rows[i].Cells[5].Value.ToString(),
                         txtDescuento.Text, txtTotal.Text, txtPorcenIRPF.Text, txtPorcenIVA.Text, txtTotalFactura.Text
@@ -105,7 +106,7 @@ namespace Aplicaciono.Facturas
                 con = repo.AbrirConexion();
                 try
                 {
-                    facturas = repo.MostrarFacturas(con);
+                    facturas = repo.FacturasByCliente(con);
                 }
                 catch (InvalidCastException er)
                 {
@@ -166,6 +167,31 @@ namespace Aplicaciono.Facturas
                         }
                         if (Decimal.TryParse(celImportValue, out decimal xt))
                             suma = suma + xt;
+                    }
+
+                    if (dataGridView1.Rows[i].Cells[2].Value != null)
+                    {
+                        Conexione repo = new Conexione();
+                        con = repo.AbrirConexion();
+                        try
+                        {
+                            Factura factura = repo.FacturaDeCliente(con, dataGridView1.Rows[i].Cells[2].Value.ToString());
+                            if (dataGridView1.Rows[i].Cells[3].Value == null) {
+                                dataGridView1.Rows[i].Cells[3].Value = factura.idLocalidad;
+                            }
+                            if (dataGridView1.Rows[i].Cells[4].Value == null)
+                            {
+                                dataGridView1.Rows[i].Cells[4].Value = factura.matricula;
+                            }
+                            if (dataGridView1.Rows[i].Cells[5].Value == null)
+                            {
+                                dataGridView1.Rows[i].Cells[5].Value = factura.importe;
+                            }
+                        }
+                        catch (InvalidCastException er)
+                        {
+                            Console.WriteLine(e.ToString());
+                        }
                     }
                 }
                 txtSuma.Text = suma.ToString();
@@ -231,6 +257,15 @@ namespace Aplicaciono.Facturas
             // TODO: This line of code loads data into the 'facturaDataSet.Facturas' table. You can move, or remove it, as needed.
             this.facturasTableAdapter.Fill(this.facturaDataSet.Facturas);
 
+        }
+
+        private void loadImpuestos()
+        {
+            Conexione repo = new Conexione();
+            SqlConnection con = repo.AbrirConexion();
+            Factura fact = repo.DatosUltimaFactura(con);
+            txtPorcenIRPF.Text = fact.IRPF;
+            txtPorcenIVA.Text = fact.IVA;
         }
     }
 }

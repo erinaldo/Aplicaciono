@@ -37,7 +37,7 @@ namespace Aplicaciono.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-VE9MLFJ\\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Secu" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-PFPBK7U\\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Secu" +
             "rity=True")]
         public string AppGestionConnectionString1 {
             get {
