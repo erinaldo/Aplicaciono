@@ -12,7 +12,7 @@ namespace Aplicaciono.Conexion
         {
             //la String de conexion se puede conseguir haciendo la base de datos y abriendo view server explorer y propiedades de conexion
             //string infoConexion = @"Data Source=(localdb)\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Security=True";
-            string infoConexion = @"Data Source=DESKTOP-PFPBK7U\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Security=True";
+            string infoConexion = @"Data Source=DESKTOP-VE9MLFJ\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Security=True";
             SqlConnection con = new SqlConnection(infoConexion);
             con.Open();
             return con;
@@ -131,6 +131,7 @@ namespace Aplicaciono.Conexion
         public Factura DatosUltimaFactura(SqlConnection con)
         {
             Factura lastFactura = new Factura();
+            long value = 0;
             using (con)
             {
                 string oString = "Select TOP 1 * from Facturas order by pkid desc";
@@ -141,6 +142,11 @@ namespace Aplicaciono.Conexion
                     {
                         lastFactura.IRPF = oReader["PorcenIRPF"].ToString();
                         lastFactura.IVA = oReader["PorcenIVA"].ToString();
+                        if (long.TryParse(oReader["NumFactura"].ToString(), out value))
+                        {
+                            value = value + 1;
+                            lastFactura.numFactura = value.ToString();
+                        }
                     }
                 }
             }

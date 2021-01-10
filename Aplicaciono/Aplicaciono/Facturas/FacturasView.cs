@@ -255,7 +255,7 @@ namespace Aplicaciono.Facturas
         private void FacturasView_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'facturaDataSet.Facturas' table. You can move, or remove it, as needed.
-            this.facturasTableAdapter.Fill(this.facturaDataSet.Facturas);
+     //Por alguna razon no funciona, en la torre si       this.facturasTableAdapter.Fill(this.facturaDataSet.Facturas);
 
         }
 
@@ -266,6 +266,7 @@ namespace Aplicaciono.Facturas
             Factura fact = repo.DatosUltimaFactura(con);
             txtPorcenIRPF.Text = fact.IRPF;
             txtPorcenIVA.Text = fact.IVA;
+            txtNumFactura.Text = fact.numFactura;
         }
     }
 }
