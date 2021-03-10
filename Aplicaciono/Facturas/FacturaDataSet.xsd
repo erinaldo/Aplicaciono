@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FacturaDataSet" targetNamespace="http://tempuri.org/FacturaDataSet.xsd" xmlns:mstns="http://tempuri.org/FacturaDataSet.xsd" xmlns="http://tempuri.org/FacturaDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="AppGestionConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AppGestionConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Aplicaciono.Properties.Settings.GlobalReference.Default.AppGestionConnectionString1" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FacturasTableAdapter" GeneratorDataComponentClassName="FacturasTableAdapter" Name="Facturas" UserDataComponentName="FacturasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AppGestionConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Cliente, Descuento, Fecha, FechaAlta, Importe, Localidad, Matricula, NumAlbaran, PkId, PorcenIRPF, PorcenIVA, Total, 
+TotalFactura,
+STR(CAST(PorcenIRPF AS DECIMAL(15 , 2)) * CAST(REPLACE(Total,',','.')AS Decimal) / 100, 15, 2) AS calcIRPF, 
+STR(CAST(PorcenIVA AS DECIMAL(15 , 2)) * CAST(REPLACE(Total,',','.')AS Decimal) / 100, 15, 2) AS calcIVA, f.dni, 
+(SELECT CASE WHEN NOT EXISTS (SELECT * FROM Facturas WHERE PorcenIVA &lt;&gt; 
+(SELECT TOP 1 PorcenIVA FROM Facturas WHERE (MONTH(FechaAlta) = 
+MONTH(GETDATE()))) OR PorcenIRPF &lt;&gt; 
+(SELECT TOP 1 PorcenIRPF FROM Facturas WHERE (MONTH(FechaAlta) = MONTH(GETDATE())))) THEN '' ELSE 'No todos los impuestos tienen el mismo porcentaje' 
+END AS your_result) AS warning ,
+[nombre]
+      ,[apellido]
+      ,[direccion]
+      ,[cp]
+      ,[ciudad]
+      ,[provincia]
+FROM Facturas f
+inner join Usuario u on u.dni = f.dni</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PkId" DataSetColumn="PkId" />
+              <Mapping SourceColumn="NumAlbaran" DataSetColumn="NumAlbaran" />
+              <Mapping SourceColumn="Localidad" DataSetColumn="Localidad" />
+              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
+              <Mapping SourceColumn="Matricula" DataSetColumn="Matricula" />
+              <Mapping SourceColumn="FechaAlta" DataSetColumn="FechaAlta" />
+              <Mapping SourceColumn="dni" DataSetColumn="dni" />
+              <Mapping SourceColumn="PorcenIVA" DataSetColumn="PorcenIVA" />
+              <Mapping SourceColumn="PorcenIRPF" DataSetColumn="PorcenIRPF" />
+              <Mapping SourceColumn="Descuento" DataSetColumn="Descuento" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="TotalFactura" DataSetColumn="TotalFactura" />
+              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
+              <Mapping SourceColumn="warning" DataSetColumn="warning" />
+              <Mapping SourceColumn="calcIRPF" DataSetColumn="calcIRPF" />
+              <Mapping SourceColumn="calcIVA" DataSetColumn="calcIVA" />
+              <Mapping SourceColumn="Importe" DataSetColumn="Importe1" />
+              <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
+              <Mapping SourceColumn="apellido" DataSetColumn="apellido" />
+              <Mapping SourceColumn="direccion" DataSetColumn="direccion" />
+              <Mapping SourceColumn="cp" DataSetColumn="cp" />
+              <Mapping SourceColumn="ciudad" DataSetColumn="ciudad" />
+              <Mapping SourceColumn="provincia" DataSetColumn="provincia" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="AppGestionConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Cliente, Descuento, Fecha, FechaAlta, Importe, Localidad, Matricula, NumAlbaran, PkId, PorcenIRPF, PorcenIVA, Total, 
+TotalFactura,
+STR(CAST(PorcenIRPF AS DECIMAL(15 , 2)) * CAST(REPLACE(Total,',','.')AS Decimal) / 100, 15, 2) AS calcIRPF, 
+STR(CAST(PorcenIVA AS DECIMAL(15 , 2)) * CAST(REPLACE(Total,',','.')AS Decimal) / 100, 15, 2) AS calcIVA, f.dni, 
+(SELECT CASE WHEN NOT EXISTS (SELECT * FROM Facturas WHERE PorcenIVA &lt;&gt; 
+(SELECT TOP 1 PorcenIVA FROM Facturas WHERE (MONTH(FechaAlta) = 
+MONTH(GETDATE()))) OR PorcenIRPF &lt;&gt; 
+(SELECT TOP 1 PorcenIRPF FROM Facturas WHERE (MONTH(FechaAlta) = MONTH(GETDATE())))) THEN '' ELSE 'No todos los impuestos tienen el mismo porcentaje' 
+END AS your_result) AS warning ,
+[nombre]
+      ,[apellido]
+      ,[direccion]
+      ,[cp]
+      ,[ciudad]
+      ,[provincia]
+FROM Facturas f
+inner join Usuario u on u.dni = f.dni</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AppGestionConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByFecha" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByFecha" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByFecha">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Cliente, Descuento, Fecha, FechaAlta, Importe, Localidad, Matricula, NumAlbaran, PkId, PorcenIRPF, PorcenIVA, Total, 
+TotalFactura,
+STR(CAST(PorcenIRPF AS DECIMAL(15 , 2)) * CAST(REPLACE(Total,',','.')AS Decimal) / 100, 15, 2) AS calcIRPF, 
+STR(CAST(PorcenIVA AS DECIMAL(15 , 2)) * CAST(REPLACE(Total,',','.')AS Decimal) / 100, 15, 2) AS calcIVA, f.dni, 
+(SELECT CASE WHEN NOT EXISTS (SELECT * FROM Facturas WHERE PorcenIVA &lt;&gt; 
+(SELECT TOP 1 PorcenIVA FROM Facturas WHERE (MONTH(FechaAlta) = 
+MONTH(GETDATE()))) OR PorcenIRPF &lt;&gt; 
+(SELECT TOP 1 PorcenIRPF FROM Facturas WHERE (MONTH(FechaAlta) = MONTH(GETDATE())))) THEN '' ELSE 'No todos los impuestos tienen el mismo porcentaje' 
+END AS your_result) AS warning ,
+[nombre]
+      ,[apellido]
+      ,[direccion]
+      ,[cp]
+      ,[ciudad]
+      ,[provincia]
+FROM Facturas f
+inner join Usuario u on u.dni = f.dni</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AppGestionConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByThisMonth" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByThisMonth" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillByThisMonth">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Cliente, Descuento, Fecha, FechaAlta, Importe, Localidad, Matricula, NumAlbaran, PkId, PorcenIRPF, PorcenIVA, Total, numFactura,
+TotalFactura,FORMAT (EOMONTH(getdate()), 'dd/MM/yyyy') as ultimoDiaMes,
+STR(CAST(PorcenIRPF AS DECIMAL(15 , 2)) * CAST(REPLACE(Total,',','.')AS Decimal) / 100, 15, 2) AS calcIRPF, 
+STR(CAST(PorcenIVA AS DECIMAL(15 , 2)) * CAST(REPLACE(Total,',','.')AS Decimal) / 100, 15, 2) AS calcIVA, f.dni, 
+(SELECT CASE WHEN NOT EXISTS (SELECT * FROM Facturas WHERE PorcenIVA &lt;&gt; 
+(SELECT TOP 1 PorcenIVA FROM Facturas WHERE (MONTH(FechaAlta) = 
+MONTH(GETDATE()))) OR PorcenIRPF &lt;&gt; 
+(SELECT TOP 1 PorcenIRPF FROM Facturas WHERE (MONTH(FechaAlta) = MONTH(GETDATE())))) THEN '' ELSE 'No todos los impuestos tienen el mismo porcentaje' 
+END AS your_result) AS warning, cast(replace((Select SUM(Importe) from Facturas Where MONTH(GETDATE()) = MONTH(FechaAlta)), '.', ',') as varchar) as suma,
+[nombre]
+      ,[apellido]
+      ,[direccion]
+      ,[cp]
+      ,[ciudad]
+      ,[provincia]
+FROM Facturas f
+inner join Usuario u on u.dni = f.dni
+Where MONTH(GETDATE()) = MONTH(FechaAlta)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="FacturaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="FacturaDataSet" msprop:Generator_UserDSName="FacturaDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Facturas" msprop:Generator_TableClassName="FacturasDataTable" msprop:Generator_TableVarName="tableFacturas" msprop:Generator_RowChangedName="FacturasRowChanged" msprop:Generator_TablePropName="Facturas" msprop:Generator_RowDeletingName="FacturasRowDeleting" msprop:Generator_RowChangingName="FacturasRowChanging" msprop:Generator_RowEvHandlerName="FacturasRowChangeEventHandler" msprop:Generator_RowDeletedName="FacturasRowDeleted" msprop:Generator_RowClassName="FacturasRow" msprop:Generator_UserTableName="Facturas" msprop:Generator_RowEvArgName="FacturasRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PkId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPkId" msprop:Generator_ColumnPropNameInRow="PkId" msprop:Generator_ColumnPropNameInTable="PkIdColumn" msprop:Generator_UserColumnName="PkId" type="xs:int" />
+              <xs:element name="NumAlbaran" msprop:Generator_ColumnVarNameInTable="columnNumAlbaran" msprop:Generator_ColumnPropNameInRow="NumAlbaran" msprop:Generator_ColumnPropNameInTable="NumAlbaranColumn" msprop:Generator_UserColumnName="NumAlbaran">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Localidad" msprop:Generator_ColumnVarNameInTable="columnLocalidad" msprop:Generator_ColumnPropNameInRow="Localidad" msprop:Generator_ColumnPropNameInTable="LocalidadColumn" msprop:Generator_UserColumnName="Localidad">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="99" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Matricula" msprop:Generator_ColumnVarNameInTable="columnMatricula" msprop:Generator_ColumnPropNameInRow="Matricula" msprop:Generator_ColumnPropNameInTable="MatriculaColumn" msprop:Generator_UserColumnName="Matricula" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="99" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_UserColumnName="Importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FechaAlta" msprop:Generator_ColumnVarNameInTable="columnFechaAlta" msprop:Generator_ColumnPropNameInRow="FechaAlta" msprop:Generator_ColumnPropNameInTable="FechaAltaColumn" msprop:Generator_UserColumnName="FechaAlta" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="dni" msprop:Generator_ColumnVarNameInTable="columndni" msprop:Generator_ColumnPropNameInRow="dni" msprop:Generator_ColumnPropNameInTable="dniColumn" msprop:Generator_UserColumnName="dni" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PorcenIVA" msprop:Generator_ColumnVarNameInTable="columnPorcenIVA" msprop:Generator_ColumnPropNameInRow="PorcenIVA" msprop:Generator_ColumnPropNameInTable="PorcenIVAColumn" msprop:Generator_UserColumnName="PorcenIVA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="99" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PorcenIRPF" msprop:Generator_ColumnVarNameInTable="columnPorcenIRPF" msprop:Generator_ColumnPropNameInRow="PorcenIRPF" msprop:Generator_ColumnPropNameInTable="PorcenIRPFColumn" msprop:Generator_UserColumnName="PorcenIRPF" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="99" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Descuento" msprop:Generator_ColumnVarNameInTable="columnDescuento" msprop:Generator_ColumnPropNameInRow="Descuento" msprop:Generator_ColumnPropNameInTable="DescuentoColumn" msprop:Generator_UserColumnName="Descuento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="99" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="99" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalFactura" msprop:Generator_ColumnVarNameInTable="columnTotalFactura" msprop:Generator_ColumnPropNameInRow="TotalFactura" msprop:Generator_ColumnPropNameInTable="TotalFacturaColumn" msprop:Generator_UserColumnName="TotalFactura" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="99" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="warning" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnwarning" msprop:Generator_ColumnPropNameInRow="warning" msprop:Generator_ColumnPropNameInTable="warningColumn" msprop:Generator_UserColumnName="warning" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="49" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="calcIRPF" msprop:Generator_ColumnVarNameInTable="columncalcIRPF" msprop:Generator_ColumnPropNameInRow="calcIRPF" msprop:Generator_ColumnPropNameInTable="calcIRPFColumn" msprop:Generator_UserColumnName="calcIRPF" type="xs:string" minOccurs="0" />
+              <xs:element name="calcIVA" msprop:Generator_ColumnVarNameInTable="columncalcIVA" msprop:Generator_ColumnPropNameInRow="calcIVA" msprop:Generator_ColumnPropNameInTable="calcIVAColumn" msprop:Generator_UserColumnName="calcIVA" type="xs:string" minOccurs="0" />
+              <xs:element name="NumFactura" msprop:Generator_ColumnVarNameInTable="columnNumFactura" msprop:Generator_ColumnPropNameInRow="NumFactura" msprop:Generator_ColumnPropNameInTable="NumFacturaColumn" msprop:Generator_UserColumnName="NumFactura" type="xs:string" minOccurs="0" />
+              <xs:element name="ultimoDiaMes" msprop:Generator_ColumnVarNameInTable="columnultimoDiaMes" msprop:Generator_ColumnPropNameInRow="ultimoDiaMes" msprop:Generator_ColumnPropNameInTable="ultimoDiaMesColumn" msprop:Generator_UserColumnName="ultimoDiaMes" type="xs:string" minOccurs="0" />
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" type="xs:string" />
+              <xs:element name="apellido" msprop:Generator_ColumnVarNameInTable="columnapellido" msprop:Generator_ColumnPropNameInRow="apellido" msprop:Generator_ColumnPropNameInTable="apellidoColumn" msprop:Generator_UserColumnName="apellido" type="xs:string" />
+              <xs:element name="direccion" msprop:Generator_ColumnVarNameInTable="columndireccion" msprop:Generator_ColumnPropNameInRow="direccion" msprop:Generator_ColumnPropNameInTable="direccionColumn" msprop:Generator_UserColumnName="direccion" type="xs:string" />
+              <xs:element name="cp" msprop:Generator_ColumnVarNameInTable="columncp" msprop:Generator_ColumnPropNameInRow="cp" msprop:Generator_ColumnPropNameInTable="cpColumn" msprop:Generator_UserColumnName="cp" type="xs:string" />
+              <xs:element name="ciudad" msprop:Generator_ColumnVarNameInTable="columnciudad" msprop:Generator_ColumnPropNameInRow="ciudad" msprop:Generator_ColumnPropNameInTable="ciudadColumn" msprop:Generator_UserColumnName="ciudad" type="xs:string" />
+              <xs:element name="provincia" msprop:Generator_ColumnVarNameInTable="columnprovincia" msprop:Generator_ColumnPropNameInRow="provincia" msprop:Generator_ColumnPropNameInTable="provinciaColumn" msprop:Generator_UserColumnName="provincia" type="xs:string" />
+              <xs:element name="Importe1" msdata:Caption="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte1" msprop:Generator_ColumnPropNameInRow="Importe1" msprop:Generator_ColumnPropNameInTable="Importe1Column" msprop:Generator_UserColumnName="Importe1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="suma" msprop:Generator_ColumnVarNameInTable="columnsuma" msprop:Generator_ColumnPropNameInRow="suma" msprop:Generator_ColumnPropNameInTable="sumaColumn" msprop:Generator_UserColumnName="suma" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

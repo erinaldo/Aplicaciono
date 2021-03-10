@@ -122,9 +122,9 @@ namespace Aplicaciono.Facturas
                         case "Cliente":
                             autotxt.Add(fact.idCliente);
                             break;
-                        case "Matricula":
+                     /*   case "Matricula":
                             autotxt.Add(fact.matricula);
-                            break;
+                            break;*/
                     }
                 }
                 auto.AutoCompleteCustomSource = autotxt;
@@ -179,10 +179,10 @@ namespace Aplicaciono.Facturas
                             if (dataGridView1.Rows[i].Cells[3].Value == null) {
                                 dataGridView1.Rows[i].Cells[3].Value = factura.idLocalidad;
                             }
-                            if (dataGridView1.Rows[i].Cells[4].Value == null)
+                           /* if (dataGridView1.Rows[i].Cells[4].Value == null)
                             {
                                 dataGridView1.Rows[i].Cells[4].Value = factura.matricula;
-                            }
+                            }*/
                             if (dataGridView1.Rows[i].Cells[5].Value == null)
                             {
                                 dataGridView1.Rows[i].Cells[5].Value = factura.importe;
@@ -255,7 +255,7 @@ namespace Aplicaciono.Facturas
         private void FacturasView_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'facturaDataSet.Facturas' table. You can move, or remove it, as needed.
-     //Por alguna razon no funciona, en la torre si       this.facturasTableAdapter.Fill(this.facturaDataSet.Facturas);
+            this.facturasTableAdapter.Fill(this.facturaDataSet.Facturas);
 
         }
 
@@ -271,14 +271,14 @@ namespace Aplicaciono.Facturas
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            string fecha, fechaFinal="", fechaOriginal;
-            if (e.ColumnIndex == 0) 
+            string fecha, fechaFinal = "", fechaOriginal;
+            if (e.ColumnIndex == 0)
             {
                 var dataGrid = sender as DataGridView;
                 if (dataGrid == null)
                     return;
 
-                fechaOriginal=dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString();
+                fechaOriginal = dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString();
                 fecha = fechaOriginal.Substring(fechaOriginal.Length - 2);
                 switch (fecha)
                 {
@@ -321,7 +321,7 @@ namespace Aplicaciono.Facturas
                 }
                 dataGridView1[e.ColumnIndex, e.RowIndex].Value = fechaFinal;
             }
-            
+
         }
     }
 }

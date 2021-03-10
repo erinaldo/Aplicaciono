@@ -43,9 +43,8 @@ namespace Aplicaciono.Informes
                   ,[Total]
                   ,[TotalFactura]
               FROM [AppGestion].[dbo].[Facturas]";
-            //string connstr = @"Data Source=DESKTOP-PFPBK7U\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Security=True";
             string connstr = @"Data Source=DESKTOP-VE9MLFJ\SQLEXPRESS;Initial Catalog=AppGestion;Integrated Security=True";
-            
+
             SqlConnection conn = new SqlConnection(connstr);
             SqlCommand cmd = new SqlCommand(sql, conn);
 
