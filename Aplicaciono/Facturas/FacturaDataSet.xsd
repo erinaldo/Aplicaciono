@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FacturasTableAdapter" GeneratorDataComponentClassName="FacturasTableAdapter" Name="Facturas" UserDataComponentName="FacturasTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="AppGestionConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="AppGestionConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Cliente, Descuento, Fecha, FechaAlta, Importe, Localidad, Matricula, NumAlbaran, PkId, PorcenIRPF, PorcenIVA, Total, 
@@ -120,14 +120,21 @@ STR(CAST(PorcenIVA AS DECIMAL(15 , 2)) * CAST(REPLACE(Total,',','.')AS Decimal) 
 MONTH(GETDATE()))) OR PorcenIRPF &lt;&gt; 
 (SELECT TOP 1 PorcenIRPF FROM Facturas WHERE (MONTH(FechaAlta) = MONTH(GETDATE())))) THEN '' ELSE 'No todos los impuestos tienen el mismo porcentaje' 
 END AS your_result) AS warning, cast(replace((Select SUM(Importe) from Facturas Where MONTH(GETDATE()) = MONTH(FechaAlta)), '.', ',') as varchar) as suma,
-[nombre]
-      ,[apellido]
-      ,[direccion]
-      ,[cp]
-      ,[ciudad]
-      ,[provincia]
+u.[nombre]
+      ,u.[apellido]
+      ,u.[direccion]
+      ,u.[cp]
+      ,u.[ciudad]
+      ,u.[provincia],
+	  c.[Nombre] 'NombreC'
+      ,c.[Cif] 'CifC'
+      ,c.[Direccion] 'DireccionC'
+      ,c.[CodigoPostal] 'CodigoPostalC'
+      ,c.[Provincia] 'ProvinciaC'
+      ,c.[Ciudad] 'CiudadC'
 FROM Facturas f
 inner join Usuario u on u.dni = f.dni
+inner join Clientes c on c.IdCliente = f.idCliente
 Where MONTH(GETDATE()) = MONTH(FechaAlta)</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -143,7 +150,7 @@ Where MONTH(GETDATE()) = MONTH(FechaAlta)</CommandText>
   <xs:element name="FacturaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="FacturaDataSet" msprop:Generator_UserDSName="FacturaDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Facturas" msprop:Generator_TableClassName="FacturasDataTable" msprop:Generator_TableVarName="tableFacturas" msprop:Generator_RowChangedName="FacturasRowChanged" msprop:Generator_TablePropName="Facturas" msprop:Generator_RowDeletingName="FacturasRowDeleting" msprop:Generator_RowChangingName="FacturasRowChanging" msprop:Generator_RowEvHandlerName="FacturasRowChangeEventHandler" msprop:Generator_RowDeletedName="FacturasRowDeleted" msprop:Generator_RowClassName="FacturasRow" msprop:Generator_UserTableName="Facturas" msprop:Generator_RowEvArgName="FacturasRowChangeEvent">
+        <xs:element name="Facturas" msprop:Generator_TableClassName="FacturasDataTable" msprop:Generator_TableVarName="tableFacturas" msprop:Generator_TablePropName="Facturas" msprop:Generator_RowDeletingName="FacturasRowDeleting" msprop:Generator_RowChangingName="FacturasRowChanging" msprop:Generator_RowEvHandlerName="FacturasRowChangeEventHandler" msprop:Generator_RowDeletedName="FacturasRowDeleted" msprop:Generator_UserTableName="Facturas" msprop:Generator_RowChangedName="FacturasRowChanged" msprop:Generator_RowEvArgName="FacturasRowChangeEvent" msprop:Generator_RowClassName="FacturasRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PkId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPkId" msprop:Generator_ColumnPropNameInRow="PkId" msprop:Generator_ColumnPropNameInTable="PkIdColumn" msprop:Generator_UserColumnName="PkId" type="xs:int" />
@@ -239,6 +246,12 @@ Where MONTH(GETDATE()) = MONTH(FechaAlta)</CommandText>
               <xs:element name="provincia" msprop:Generator_ColumnVarNameInTable="columnprovincia" msprop:Generator_ColumnPropNameInRow="provincia" msprop:Generator_ColumnPropNameInTable="provinciaColumn" msprop:Generator_UserColumnName="provincia" type="xs:string" />
               <xs:element name="Importe1" msdata:Caption="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte1" msprop:Generator_ColumnPropNameInRow="Importe1" msprop:Generator_ColumnPropNameInTable="Importe1Column" msprop:Generator_UserColumnName="Importe1" type="xs:decimal" minOccurs="0" />
               <xs:element name="suma" msprop:Generator_ColumnVarNameInTable="columnsuma" msprop:Generator_ColumnPropNameInRow="suma" msprop:Generator_ColumnPropNameInTable="sumaColumn" msprop:Generator_UserColumnName="suma" type="xs:string" minOccurs="0" />
+              <xs:element name="NombreC" msprop:Generator_ColumnVarNameInTable="columnNombreC" msprop:Generator_ColumnPropNameInRow="NombreC" msprop:Generator_ColumnPropNameInTable="NombreCColumn" msprop:Generator_UserColumnName="NombreC" type="xs:string" minOccurs="0" />
+              <xs:element name="CifC" msprop:Generator_ColumnVarNameInTable="columnCifC" msprop:Generator_ColumnPropNameInRow="CifC" msprop:Generator_ColumnPropNameInTable="CifCColumn" msprop:Generator_UserColumnName="CifC" type="xs:string" minOccurs="0" />
+              <xs:element name="DireccionC" msprop:Generator_ColumnVarNameInTable="columnDireccionC" msprop:Generator_ColumnPropNameInRow="DireccionC" msprop:Generator_ColumnPropNameInTable="DireccionCColumn" msprop:Generator_UserColumnName="DireccionC" type="xs:string" minOccurs="0" />
+              <xs:element name="CodigoPostalC" msprop:Generator_ColumnVarNameInTable="columnCodigoPostalC" msprop:Generator_ColumnPropNameInRow="CodigoPostalC" msprop:Generator_ColumnPropNameInTable="CodigoPostalCColumn" msprop:Generator_UserColumnName="CodigoPostalC" type="xs:string" minOccurs="0" />
+              <xs:element name="ProvinciaC" msprop:Generator_ColumnVarNameInTable="columnProvinciaC" msprop:Generator_ColumnPropNameInRow="ProvinciaC" msprop:Generator_ColumnPropNameInTable="ProvinciaCColumn" msprop:Generator_UserColumnName="ProvinciaC" type="xs:string" minOccurs="0" />
+              <xs:element name="CiudadC" msprop:Generator_ColumnVarNameInTable="columnCiudadC" msprop:Generator_ColumnPropNameInRow="CiudadC" msprop:Generator_ColumnPropNameInTable="CiudadCColumn" msprop:Generator_UserColumnName="CiudadC" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -1,6 +1,12 @@
-﻿namespace Aplicaciono.Modelos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Aplicaciono.Modelos
 {
-    class Factura
+    class FacturaCompleta
     {
         public string numFactura { get; set; }
         public string fecha { get; set; }
@@ -14,11 +20,7 @@
         public string IRPF { get; set; }
         public string IVA { get; set; }
         public string TotalFactura { get; set; }
-        public string dni { get; set; }
-
-        public string PkId { get; set; }
-
-        public Factura(string numFactura, string fecha, string numAlbaran, string idLocalidad, string idCliente, string matricula, string importe, 
+        public FacturaCompleta(string numFactura, string fecha, string numAlbaran, string idLocalidad, string idCliente, string matricula, string importe,
             string descuento, string total, string irpf, string iva, string totalFactura)
         {
             this.numFactura = numFactura;
@@ -33,11 +35,6 @@
             this.IRPF = irpf;
             this.IVA = iva;
             this.TotalFactura = totalFactura;
-        }
-
-        public Factura()
-        {
-
         }
     }
 }

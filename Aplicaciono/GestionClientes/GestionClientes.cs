@@ -22,8 +22,8 @@ namespace Aplicaciono.Facturas
         private void btnImprimir_Click(object sender, System.EventArgs e)
         {
             Guardarfacturas();
-            ReportFacturasForm fact = new ReportFacturasForm();
-            fact.Show();
+            /*ReportFacturasForm fact = new ReportFacturasForm();
+            fact.Show();*/
         }
 
         private bool Guardarfacturas()

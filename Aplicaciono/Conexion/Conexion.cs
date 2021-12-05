@@ -235,5 +235,51 @@ namespace Aplicaciono.Conexion
             }
             return lastFactura;
         }
+
+        public Factura LoadFacturas(SqlConnection con)
+        {
+            Factura lastFactura = new Factura();
+            using (con)
+            {
+                string oString = "Select TOP 1 * from Facturas order by pkid desc";
+                SqlCommand oCmd = new SqlCommand(oString, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        lastFactura.IRPF = oReader["PorcenIRPF"].ToString();
+                        lastFactura.IVA = oReader["PorcenIVA"].ToString();
+                    }
+                }
+            }
+            return lastFactura;
+        }
+
+        public List<Factura> LoadFacturasMes(SqlConnection con)
+        {
+            List<Factura> listaFacturas = new List<Factura>();
+            using (con)
+            {
+                string oString = "select * from Facturas where MONTH(FechaAlta) = MONTH(GETDATE())";
+                SqlCommand oCmd = new SqlCommand(oString, con);
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        Factura fact = new Factura();
+                        fact.numAlbaran = oReader["NumAlbaran"].ToString();
+                        fact.idLocalidad = oReader["Localidad"].ToString();
+                        fact.idCliente = oReader["Cliente"].ToString();
+                        fact.matricula = oReader["Matricula"].ToString();
+                        fact.importe = oReader["Importe"].ToString();
+                        fact.fecha = oReader["Fecha"].ToString();
+                        fact.dni = oReader["Importe"].ToString();
+                        fact.PkId = oReader["Importe"].ToString();
+                        listaFacturas.Add(fact);
+                    }
+                }
+            }
+            return listaFacturas;
+        }
     }
 }

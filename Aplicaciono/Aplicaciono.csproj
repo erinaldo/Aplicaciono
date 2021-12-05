@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Modelos\Cliente.cs" />
     <Compile Include="Modelos\Factura.cs" />
+    <Compile Include="Modelos\FacturaCompleta.cs" />
     <Compile Include="Modelos\PojoFactura.cs" />
     <Compile Include="Splash\FormTest.cs">
       <SubType>Form</SubType>

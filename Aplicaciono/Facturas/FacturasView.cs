@@ -19,11 +19,13 @@ namespace Aplicaciono.Facturas
         decimal TotalIVA = 0;
         decimal suma = 0;
         decimal descuento = 0;
+        List<Factura> factGuardadas;
 
         public FacturasView()
         {
             InitializeComponent();
             loadImpuestos();
+            loadFacturasMes();
         }
 
         private void btnImprimir_Click(object sender, System.EventArgs e)
@@ -43,25 +45,27 @@ namespace Aplicaciono.Facturas
         {
             Conexione repo = new Conexione();
             SqlConnection con = repo.AbrirConexion();
-            Usuario user = repo.LeerUsuario(con);            
+            Usuario user = repo.LeerUsuario(con);
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 con = repo.AbrirConexion();
-                if (dataGridView1.Rows[i].Cells[5].Value != null)
+
+                if (dataGridView1.Rows[i].Cells[5].Value != null && dataGridView1.Rows[i].Cells[6].Value == null)
                 {
                     Factura fact = new Factura
                         (
                         txtNumFactura.Text,
-                        dataGridView1.Rows[i].Cells[0].Value.ToString(), 
+                        dataGridView1.Rows[i].Cells[0].Value.ToString(),
                         dataGridView1.Rows[i].Cells[1].Value.ToString(),
                         dataGridView1.Rows[i].Cells[3].Value.ToString(),
-                        dataGridView1.Rows[i].Cells[2].Value.ToString(),                        
+                        dataGridView1.Rows[i].Cells[2].Value.ToString(),
                         dataGridView1.Rows[i].Cells[4].Value.ToString(),
                         dataGridView1.Rows[i].Cells[5].Value.ToString(),
                         txtDescuento.Text, txtTotal.Text, txtPorcenIRPF.Text, txtPorcenIVA.Text, txtTotalFactura.Text
                     );
                     repo.GuardarFactura(con, fact, user.dni);
                 }
+
             }
             return true;
         }
@@ -322,6 +326,25 @@ namespace Aplicaciono.Facturas
                 dataGridView1[e.ColumnIndex, e.RowIndex].Value = fechaFinal;
             }
 
+        }
+        private void loadFacturasMes()
+        {
+            Conexione repo = new Conexione();
+            SqlConnection con = repo.AbrirConexion();
+            factGuardadas = repo.LoadFacturasMes(con);
+            bool registrado;
+            for (int i = 0; i < factGuardadas.Count; i++)
+            {
+                if (String.IsNullOrEmpty(factGuardadas[i].PkId))
+                {
+                    registrado = false;
+                }
+                else
+                {
+                    registrado = true;
+                }
+                this.dataGridView1.Rows.Add(factGuardadas[i].fecha, factGuardadas[i].numAlbaran, factGuardadas[i].idCliente, factGuardadas[i].idLocalidad, factGuardadas[i].matricula, factGuardadas[i].importe, registrado);
+            }
         }
     }
 }

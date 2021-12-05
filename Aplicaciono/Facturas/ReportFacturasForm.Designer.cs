@@ -68,9 +68,10 @@
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Aplicaciono.Informes.FacturaReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.reportViewer1.Size = new System.Drawing.Size(1067, 554);
             this.reportViewer1.TabIndex = 0;
             // 
             // facturaDataSetBindingSource
@@ -89,42 +90,45 @@
             // 
             // fillByFechaToolStrip
             // 
+            this.fillByFechaToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.fillByFechaToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fechaAltaToolStripLabel,
             this.fechaAltaToolStripTextBox,
             this.fillByFechaToolStripButton});
             this.fillByFechaToolStrip.Location = new System.Drawing.Point(0, 0);
             this.fillByFechaToolStrip.Name = "fillByFechaToolStrip";
-            this.fillByFechaToolStrip.Size = new System.Drawing.Size(800, 25);
+            this.fillByFechaToolStrip.Size = new System.Drawing.Size(1067, 27);
             this.fillByFechaToolStrip.TabIndex = 1;
             this.fillByFechaToolStrip.Text = "fillByFechaToolStrip";
             // 
             // fechaAltaToolStripLabel
             // 
             this.fechaAltaToolStripLabel.Name = "fechaAltaToolStripLabel";
-            this.fechaAltaToolStripLabel.Size = new System.Drawing.Size(62, 22);
+            this.fechaAltaToolStripLabel.Size = new System.Drawing.Size(77, 24);
             this.fechaAltaToolStripLabel.Text = "FechaAlta:";
             // 
             // fechaAltaToolStripTextBox
             // 
+            this.fechaAltaToolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.fechaAltaToolStripTextBox.Name = "fechaAltaToolStripTextBox";
-            this.fechaAltaToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            this.fechaAltaToolStripTextBox.Size = new System.Drawing.Size(132, 27);
             // 
             // fillByFechaToolStripButton
             // 
             this.fillByFechaToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.fillByFechaToolStripButton.Name = "fillByFechaToolStripButton";
-            this.fillByFechaToolStripButton.Size = new System.Drawing.Size(70, 22);
+            this.fillByFechaToolStripButton.Size = new System.Drawing.Size(86, 24);
             this.fillByFechaToolStripButton.Text = "FillByFecha";
             this.fillByFechaToolStripButton.Click += new System.EventHandler(this.fillByFechaToolStripButton_Click);
             // 
             // fillByThisMonthToolStrip
             // 
+            this.fillByThisMonthToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.fillByThisMonthToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fillByThisMonthToolStripButton});
-            this.fillByThisMonthToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.fillByThisMonthToolStrip.Location = new System.Drawing.Point(0, 27);
             this.fillByThisMonthToolStrip.Name = "fillByThisMonthToolStrip";
-            this.fillByThisMonthToolStrip.Size = new System.Drawing.Size(111, 25);
+            this.fillByThisMonthToolStrip.Size = new System.Drawing.Size(1067, 27);
             this.fillByThisMonthToolStrip.TabIndex = 2;
             this.fillByThisMonthToolStrip.Text = "fillByThisMonthToolStrip";
             // 
@@ -132,17 +136,18 @@
             // 
             this.fillByThisMonthToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.fillByThisMonthToolStripButton.Name = "fillByThisMonthToolStripButton";
-            this.fillByThisMonthToolStripButton.Size = new System.Drawing.Size(96, 22);
+            this.fillByThisMonthToolStripButton.Size = new System.Drawing.Size(117, 24);
             this.fillByThisMonthToolStripButton.Text = "FillByThisMonth";
             // 
             // ReportFacturasForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.fillByThisMonthToolStrip);
             this.Controls.Add(this.fillByFechaToolStrip);
             this.Controls.Add(this.reportViewer1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ReportFacturasForm";
             this.Text = "ReportFacturasForm";
             this.Load += new System.EventHandler(this.ReportFacturasForm_Load);
