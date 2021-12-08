@@ -125,6 +125,30 @@
           <DataField>Importe1</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="NombreC">
+          <DataField>NombreC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CifC">
+          <DataField>CifC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DireccionC">
+          <DataField>DireccionC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CodigoPostalC">
+          <DataField>CodigoPostalC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProvinciaC">
+          <DataField>ProvinciaC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CiudadC">
+          <DataField>CiudadC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>FacturaDataSet</rd:DataSetName>
@@ -856,7 +880,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>TRANS NOGASAS.L</Value>
+                    <Value>=First(Fields!NombreC.Value, "FacturaDataSet")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -888,7 +912,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>B66333113</Value>
+                    <Value>=First(Fields!CifC.Value, "FacturaDataSet")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -920,7 +944,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>PLAZA DEL VENTRE Nº12</Value>
+                    <Value>=First(Fields!DireccionC.Value, "FacturaDataSet")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -952,7 +976,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>08014 BARCELONA</Value>
+                    <Value>=First(Fields!CodigoPostalC.Value, "FacturaDataSet")+" "+ First(Fields!ProvinciaC.Value, "FacturaDataSet")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -984,7 +1008,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>BARCELONA</Value>
+                    <Value>=First(Fields!CiudadC.Value, "FacturaDataSet")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
