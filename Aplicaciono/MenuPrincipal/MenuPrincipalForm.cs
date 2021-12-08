@@ -4,6 +4,7 @@ using Aplicaciono.Informes;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Aplicaciono.MenuPrincipal
@@ -18,6 +19,7 @@ namespace Aplicaciono.MenuPrincipal
         private void btnGenerarFact_Click(object sender, EventArgs e)
         {
             FacturasView fact = new FacturasView();
+            fact.Size = new Size(1300, 600);
             fact.ShowDialog();
         }
 

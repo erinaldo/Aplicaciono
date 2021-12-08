@@ -80,12 +80,12 @@ namespace Aplicaciono.Conexion
             using (con)
             {
                 string sql = "INSERT INTO Facturas(NumFactura,Fecha,NumAlbaran,Localidad,Cliente,Matricula," +
-                "Importe,FechaAlta, dni, PorcenIVA, PorcenIRPF, Descuento,Total,TotalFactura) " +
+                "Importe,FechaAlta, dni, PorcenIVA, PorcenIRPF, Descuento,Total,TotalFactura,idCliente) " +
                 "VALUES('" + fact.numFactura +
                 "','" + fact.fecha +
                 "','" + fact.numAlbaran +
                 "','" + fact.idLocalidad +
-                "','" + fact.idCliente + " " +
+                "','" + fact.Cliente + " " +
                 "','" + fact.matricula +
                 "','" + fact.importe.Replace(",", ".") + 
                 "','" + DateTime.Now.ToString("dd/MM/yyyy HH:mm") +
@@ -94,7 +94,9 @@ namespace Aplicaciono.Conexion
                 "','" + fact.IRPF.Replace(",", ".") +
                 "','" + fact.Descuento.Replace(",", ".") +
                 "','" + fact.Total.Replace(",",".") +
-                "','" + fact.TotalFactura.Replace(",", ".") + "')";
+                "','" + fact.TotalFactura.Replace(",", ".")+
+                "','" + fact.idCliente +
+                "')";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.ExecuteNonQuery();

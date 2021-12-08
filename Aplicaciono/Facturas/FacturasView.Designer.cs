@@ -69,6 +69,10 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Guardada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.clientesDataSet = new Aplicaciono.ClientesDataSet();
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clientesTableAdapter = new Aplicaciono.ClientesDataSetTableAdapters.ClientesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.facturaDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.facturaDataSet)).BeginInit();
@@ -77,6 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.appGestionDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.facturasBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // facturaDataSetBindingSource
@@ -87,7 +93,6 @@
             // facturaDataSet
             // 
             this.facturaDataSet.DataSetName = "FacturaDataSet";
-            this.facturaDataSet.Namespace = "http://tempuri.org/FacturaDataSet.xsd";
             this.facturaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnImprimir
@@ -346,7 +351,6 @@
             // appGestionDataSet
             // 
             this.appGestionDataSet.DataSetName = "AppGestionDataSet";
-            this.appGestionDataSet.Namespace = "http://tempuri.org/AppGestionDataSet.xsd";
             this.appGestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // appGestionDataSetBindingSource
@@ -430,14 +434,41 @@
             this.Guardada.MinimumWidth = 6;
             this.Guardada.Name = "Guardada";
             this.Guardada.ReadOnly = true;
-            this.Guardada.Width = 125;
             this.Guardada.Visible = false;
+            this.Guardada.Width = 125;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.clientesBindingSource;
+            this.comboBox1.DisplayMember = "Nombre";
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(1419, 38);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(163, 33);
+            this.comboBox1.TabIndex = 30;
+            this.comboBox1.ValueMember = "IdCliente";
+            // 
+            // clientesDataSet
+            // 
+            this.clientesDataSet.DataSetName = "ClientesDataSet";
+            this.clientesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientesBindingSource
+            // 
+            this.clientesBindingSource.DataMember = "Clientes";
+            this.clientesBindingSource.DataSource = this.clientesDataSet;
+            // 
+            // clientesTableAdapter
+            // 
+            this.clientesTableAdapter.ClearBeforeFill = true;
             // 
             // FacturasView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1898, 683);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNumFactura);
@@ -475,6 +506,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.appGestionDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.facturasBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,6 +556,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Guardada;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private ClientesDataSet clientesDataSet;
+        private System.Windows.Forms.BindingSource clientesBindingSource;
+        private ClientesDataSetTableAdapters.ClientesTableAdapter clientesTableAdapter;
         // private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }

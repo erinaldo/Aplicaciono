@@ -69,6 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppGestionDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ClientesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientesDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Conexion\IRepo.cs" />
     <Compile Include="CrearUsuario\CrearUsuarioPresenter.cs" />
@@ -178,6 +183,17 @@
     </None>
     <None Include="AppGestionDataSet.xss">
       <DependentUpon>AppGestionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClientesDataSet.xsc">
+      <DependentUpon>ClientesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClientesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClientesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClientesDataSet.xss">
+      <DependentUpon>ClientesDataSet.xsd</DependentUpon>
     </None>
     <None Include="Facturas\FacturaDataSet.xsc">
       <DependentUpon>FacturaDataSet.xsd</DependentUpon>

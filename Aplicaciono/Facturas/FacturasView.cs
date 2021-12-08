@@ -61,7 +61,8 @@ namespace Aplicaciono.Facturas
                         dataGridView1.Rows[i].Cells[2].Value.ToString(),
                         dataGridView1.Rows[i].Cells[4].Value.ToString(),
                         dataGridView1.Rows[i].Cells[5].Value.ToString(),
-                        txtDescuento.Text, txtTotal.Text, txtPorcenIRPF.Text, txtPorcenIVA.Text, txtTotalFactura.Text
+                        txtDescuento.Text, txtTotal.Text, txtPorcenIRPF.Text, txtPorcenIVA.Text, txtTotalFactura.Text, 
+                        comboBox1.SelectedValue.ToString()
                     );
                     repo.GuardarFactura(con, fact, user.dni);
                 }
@@ -258,6 +259,8 @@ namespace Aplicaciono.Facturas
 
         private void FacturasView_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'clientesDataSet.Clientes' Puede moverla o quitarla según sea necesario.
+            this.clientesTableAdapter.Fill(this.clientesDataSet.Clientes);
             // TODO: This line of code loads data into the 'facturaDataSet.Facturas' table. You can move, or remove it, as needed.
             this.facturasTableAdapter.Fill(this.facturaDataSet.Facturas);
 
