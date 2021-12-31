@@ -145,6 +145,7 @@ namespace Aplicaciono.Conexion
                         lastFactura.IRPF = oReader["PorcenIRPF"].ToString();
                         lastFactura.IVA = oReader["PorcenIVA"].ToString();
                         lastFactura.numFactura = oReader["NumFactura"].ToString();
+                        lastFactura.idCliente = oReader["IdCliente"].ToString();
                     }
                 }
                 if (long.TryParse(lastFactura.numFactura, out value))
@@ -204,12 +205,20 @@ namespace Aplicaciono.Conexion
         {
             using (con)
             {
-                string sql = "INSERT INTO Clientes(Nombre,Cif,Direccion,CodigoPostal,Provincia) " +
+                string sql = "IF EXISTS(select CIF from Clientes where Cif = '" + client.cif + "') " +
+            "BEGIN "+
+            "UPDATE Clientes set Nombre ='" + client.nombre + "', Cif = '" + client.cif + "', Direccion = '" + client.direccion +
+            "', CodigoPostal = '" + client.codigoPostal + "', Provincia = '" + client.provincia + "' where CIF = '" + client.cif +"' "+ 
+            " END "+
+            "ELSE "+
+            "BEGIN "+
+            "INSERT INTO Clientes(Nombre, Cif, Direccion, CodigoPostal, Provincia) " +
                 "VALUES('" + client.nombre +
                 "','" + client.cif +
                 "','" + client.direccion +
                 "','" + client.codigoPostal +
-                "','" + client.provincia + "')";
+                "','" + client.provincia + "') "+
+            "END";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.ExecuteNonQuery();
@@ -219,23 +228,28 @@ namespace Aplicaciono.Conexion
             return true;
         }
 
-        public Factura LoadClientes(SqlConnection con)
+        public List<Cliente> LoadClientes(SqlConnection con)
         {
-            Factura lastFactura = new Factura();
+            List<Cliente> listaClientes = new List<Cliente>();
             using (con)
             {
-                string oString = "Select TOP 1 * from Facturas order by pkid desc";
+                string oString = "select * from Clientes";
                 SqlCommand oCmd = new SqlCommand(oString, con);
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
                 {
                     while (oReader.Read())
                     {
-                        lastFactura.IRPF = oReader["PorcenIRPF"].ToString();
-                        lastFactura.IVA = oReader["PorcenIVA"].ToString();
+                        Cliente cliente = new Cliente();
+                        cliente.nombre = oReader["Nombre"].ToString();
+                        cliente.cif = oReader["Cif"].ToString();
+                        cliente.direccion = oReader["Direccion"].ToString();
+                        cliente.codigoPostal = oReader["CodigoPostal"].ToString();
+                        cliente.provincia = oReader["Provincia"].ToString();
+                        listaClientes.Add(cliente);
                     }
                 }
             }
-            return lastFactura;
+            return listaClientes;
         }
 
         public Factura LoadFacturas(SqlConnection con)

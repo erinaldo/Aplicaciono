@@ -20,6 +20,7 @@ namespace Aplicaciono.Facturas
         decimal suma = 0;
         decimal descuento = 0;
         List<Factura> factGuardadas;
+        Factura fact;
 
         public FacturasView()
         {
@@ -264,16 +265,26 @@ namespace Aplicaciono.Facturas
             // TODO: This line of code loads data into the 'facturaDataSet.Facturas' table. You can move, or remove it, as needed.
             this.facturasTableAdapter.Fill(this.facturaDataSet.Facturas);
 
+            comboBox1.SelectedValue = fact.idCliente;
         }
 
         private void loadImpuestos()
         {
             Conexione repo = new Conexione();
             SqlConnection con = repo.AbrirConexion();
-            Factura fact = repo.DatosUltimaFactura(con);
+            fact = repo.DatosUltimaFactura(con);
             txtPorcenIRPF.Text = fact.IRPF;
             txtPorcenIVA.Text = fact.IVA;
             txtNumFactura.Text = fact.numFactura;
+
+            /*comboBox1.DisplayMember = "Nombre"; // will display Name property
+            comboBox1.ValueMember = "IdCliente"; // will select Value property
+
+            clientesBindingSource.DataSource = clientesDataSet;
+            comboBox1.DataSource = clientesBindingSource; // assign list (will populate comboBox1.Items)
+
+            comboBox1.SelectedValue = fact.idCliente;*/
+
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)

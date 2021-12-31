@@ -21,12 +21,12 @@ namespace Aplicaciono.Facturas
 
         private void btnImprimir_Click(object sender, System.EventArgs e)
         {
-            Guardarfacturas();
+            GuardarClientes();
             /*ReportFacturasForm fact = new ReportFacturasForm();
             fact.Show();*/
         }
 
-        private bool Guardarfacturas()
+        private bool GuardarClientes()
         {
             Conexione repo = new Conexione();
             SqlConnection con = repo.AbrirConexion();
@@ -54,7 +54,21 @@ namespace Aplicaciono.Facturas
         {
             Conexione repo = new Conexione();
             SqlConnection con = repo.AbrirConexion();
-            Factura fact = repo.DatosUltimaFactura(con);
+            List<Cliente> clientes = repo.LoadClientes(con);
+
+            bool registrado;
+            for (int i = 0; i < clientes.Count; i++)
+            {
+                if (String.IsNullOrEmpty(clientes[i].cif))
+                {
+                    registrado = false;
+                }
+                else
+                {
+                    registrado = true;
+                }
+                this.dataGridView1.Rows.Add(clientes[i].nombre, clientes[i].cif, clientes[i].direccion, clientes[i].codigoPostal, clientes[i].provincia);
+            }
         }
     }
 }

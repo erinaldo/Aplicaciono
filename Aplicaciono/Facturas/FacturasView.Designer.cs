@@ -70,8 +70,8 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Guardada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.clientesDataSet = new Aplicaciono.ClientesDataSet();
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clientesDataSet = new Aplicaciono.ClientesDataSet();
             this.clientesTableAdapter = new Aplicaciono.ClientesDataSetTableAdapters.ClientesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.facturaDataSetBindingSource)).BeginInit();
@@ -81,8 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.appGestionDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.facturasBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // facturaDataSetBindingSource
@@ -449,15 +449,15 @@
             this.comboBox1.TabIndex = 30;
             this.comboBox1.ValueMember = "IdCliente";
             // 
-            // clientesDataSet
-            // 
-            this.clientesDataSet.DataSetName = "ClientesDataSet";
-            this.clientesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // clientesBindingSource
             // 
             this.clientesBindingSource.DataMember = "Clientes";
             this.clientesBindingSource.DataSource = this.clientesDataSet;
+            // 
+            // clientesDataSet
+            // 
+            this.clientesDataSet.DataSetName = "ClientesDataSet";
+            this.clientesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // clientesTableAdapter
             // 
@@ -506,8 +506,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.appGestionDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.facturasBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
