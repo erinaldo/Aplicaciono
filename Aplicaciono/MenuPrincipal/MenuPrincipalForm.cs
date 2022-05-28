@@ -37,6 +37,9 @@ namespace Aplicaciono.MenuPrincipal
 
         private void btnCargarFacturas_Click(object sender, EventArgs e)
         {
+            PedirNumFactura loadfact = new PedirNumFactura();
+            loadfact.Size = new Size(400, 200);
+            loadfact.ShowDialog();
 
         }
     }

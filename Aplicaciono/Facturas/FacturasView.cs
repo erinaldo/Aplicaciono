@@ -22,7 +22,7 @@ namespace Aplicaciono.Facturas
         List<Factura> factGuardadas;
         Factura fact;
 
-        public FacturasView()
+        public FacturasView(string facturaABuscar)
         {
             InitializeComponent();
             loadImpuestos();

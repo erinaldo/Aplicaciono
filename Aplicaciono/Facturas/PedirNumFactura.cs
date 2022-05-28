@@ -12,9 +12,24 @@ namespace Aplicaciono.Facturas
 {
     public partial class PedirNumFactura : Form
     {
+        public string numFacturaBuscar;
+        
         public PedirNumFactura()
         {
             InitializeComponent();
+        }
+
+        private void aceptar_Click(object sender, EventArgs e)
+        {
+            numFacturaBuscar = numFacturaCargar.Text;
+            FacturasView fact = new FacturasView(numFacturaBuscar);
+            fact.Size = new Size(1300, 600);
+            fact.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
