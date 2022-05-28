@@ -33,6 +33,11 @@ namespace Aplicaciono.MenuPrincipal
         {
             CrearUsuarioView fact = new CrearUsuarioView();
             fact.Show();
-        }        
+        }
+
+        private void btnCargarFacturas_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

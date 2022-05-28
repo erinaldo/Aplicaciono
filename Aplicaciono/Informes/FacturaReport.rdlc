@@ -388,7 +388,7 @@
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>CLIENTE</Value>
+                                            <Value>VIAJE</Value>
                                             <Style>
                                               <FontSize>11pt</FontSize>
                                               <FontWeight>Bold</FontWeight>

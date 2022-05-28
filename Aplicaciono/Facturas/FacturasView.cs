@@ -264,8 +264,11 @@ namespace Aplicaciono.Facturas
             this.clientesTableAdapter.Fill(this.clientesDataSet.Clientes);
             // TODO: This line of code loads data into the 'facturaDataSet.Facturas' table. You can move, or remove it, as needed.
             this.facturasTableAdapter.Fill(this.facturaDataSet.Facturas);
-
-            comboBox1.SelectedValue = fact.idCliente;
+            if (fact.Cliente != null)
+            {
+                comboBox1.SelectedValue = fact.idCliente;
+            }
+            
         }
 
         private void loadImpuestos()
@@ -275,7 +278,7 @@ namespace Aplicaciono.Facturas
             fact = repo.DatosUltimaFactura(con);
             txtPorcenIRPF.Text = fact.IRPF;
             txtPorcenIVA.Text = fact.IVA;
-            txtNumFactura.Text = fact.numFactura;
+          //  txtNumFactura.Text = fact.numFactura;
 
             /*comboBox1.DisplayMember = "Nombre"; // will display Name property
             comboBox1.ValueMember = "IdCliente"; // will select Value property
