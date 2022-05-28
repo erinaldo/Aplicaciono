@@ -271,12 +271,12 @@ namespace Aplicaciono.Conexion
             return lastFactura;
         }
 
-        public List<Factura> LoadFacturasMes(SqlConnection con)
+        public List<Factura> LoadFacturasMes(SqlConnection con, string numFactura)
         {
             List<Factura> listaFacturas = new List<Factura>();
             using (con)
             {
-                string oString = "select * from Facturas where MONTH(FechaAlta) = MONTH(GETDATE())";
+                string oString = "select * from Facturas where NumFactura = "+ numFactura;
                 SqlCommand oCmd = new SqlCommand(oString, con);
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
                 {

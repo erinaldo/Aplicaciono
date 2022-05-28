@@ -52,6 +52,7 @@ namespace Aplicaciono.Facturas
             this.numFacturaCargar.Name = "numFacturaCargar";
             this.numFacturaCargar.Size = new System.Drawing.Size(323, 30);
             this.numFacturaCargar.TabIndex = 1;
+            this.numFacturaCargar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numFacturaCargar_KeyPress);
             // 
             // aceptar
             // 

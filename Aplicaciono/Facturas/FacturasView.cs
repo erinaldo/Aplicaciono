@@ -26,7 +26,11 @@ namespace Aplicaciono.Facturas
         {
             InitializeComponent();
             loadImpuestos();
-            loadFacturasMes();
+            if (!String.IsNullOrEmpty(facturaABuscar))
+            {
+                loadFacturasMes(facturaABuscar);
+            }
+            
         }
 
         private void btnImprimir_Click(object sender, System.EventArgs e)
@@ -344,11 +348,11 @@ namespace Aplicaciono.Facturas
             }
 
         }
-        private void loadFacturasMes()
+        private void loadFacturasMes(string facturaABuscar)
         {
             Conexione repo = new Conexione();
             SqlConnection con = repo.AbrirConexion();
-            factGuardadas = repo.LoadFacturasMes(con);
+            factGuardadas = repo.LoadFacturasMes(con, facturaABuscar);
             bool registrado;
             for (int i = 0; i < factGuardadas.Count; i++)
             {
