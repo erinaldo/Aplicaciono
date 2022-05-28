@@ -147,12 +147,7 @@ namespace Aplicaciono.Conexion
                         lastFactura.numFactura = oReader["NumFactura"].ToString();
                         lastFactura.idCliente = oReader["IdCliente"].ToString();
                     }
-                }
-                if (long.TryParse(lastFactura.numFactura, out value))
-                {
-                    value = value + 1;
-                    lastFactura.numFactura = value.ToString();
-                }
+                }                
             }            
             return lastFactura;
         }

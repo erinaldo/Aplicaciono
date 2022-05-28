@@ -25,7 +25,7 @@ namespace Aplicaciono.Facturas
         public FacturasView(string facturaABuscar)
         {
             InitializeComponent();
-            loadImpuestos();
+            loadImpuestos(facturaABuscar);
             if (!String.IsNullOrEmpty(facturaABuscar))
             {
                 loadFacturasMes(facturaABuscar);
@@ -275,23 +275,26 @@ namespace Aplicaciono.Facturas
             
         }
 
-        private void loadImpuestos()
+        private void loadImpuestos(string facturaABuscar)
         {
             Conexione repo = new Conexione();
             SqlConnection con = repo.AbrirConexion();
+            long value = 0;
             fact = repo.DatosUltimaFactura(con);
             txtPorcenIRPF.Text = fact.IRPF;
             txtPorcenIVA.Text = fact.IVA;
-          //  txtNumFactura.Text = fact.numFactura;
-
-            /*comboBox1.DisplayMember = "Nombre"; // will display Name property
-            comboBox1.ValueMember = "IdCliente"; // will select Value property
-
-            clientesBindingSource.DataSource = clientesDataSet;
-            comboBox1.DataSource = clientesBindingSource; // assign list (will populate comboBox1.Items)
-
-            comboBox1.SelectedValue = fact.idCliente;*/
-
+            if (String.IsNullOrEmpty(facturaABuscar))
+            {
+                if (long.TryParse(fact.numFactura, out value))
+                {
+                    value = value + 1;
+                    txtNumFactura.Text = value.ToString();
+                }
+            }
+            else
+            {
+                txtNumFactura.Text = fact.numFactura;
+            }
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
