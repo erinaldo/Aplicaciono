@@ -12,6 +12,7 @@ namespace Aplicaciono.CrearUsuario
         SqlConnection con;
         ICrearUsuarioPresenter presenter;
         Usuario usuario;
+        bool modificarUser;
         public CrearUsuarioView()
         {
             InitializeComponent();
@@ -19,16 +20,29 @@ namespace Aplicaciono.CrearUsuario
             repo = new Conexione();
             presenter = new CrearUsuarioPresenter(this, repo);
             usuario = new Usuario();
+            modificarUser = false;
         }
 
         private void btGuardar_Click(object sender, EventArgs e)
         {
-            presenter.guardarClick(usuario, con);
+            Usuario usuario = new Usuario();
+            con = repo.AbrirConexion();
+            usuario.dni = editDNI.Text;
+            usuario.nombre = editNombre.Text;
+            usuario.apellido = editApellido1.Text;
+            usuario.direccion = editDireccion.Text;
+            usuario.cp = editCP.Text;
+            usuario.ciudad = editCiudad.Text;
+            usuario.provincia = editProvincia.Text;
+            if (presenter.guardarClick(usuario, con, modificarUser) == true)
+                this.Close();
+            else
+                MessageBox.Show("Ha ocurrido un error al actualizar los datos");
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            presenter.cancelarClick();
+            this.Close();
         }
 
         private void editDNI_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -84,6 +98,24 @@ namespace Aplicaciono.CrearUsuario
             if(presenter.comprobarPalabras(e, errorProvider1, editProvincia))
             {
                 usuario.provincia = editProvincia.Text;
+            }
+        }
+
+        private void CrearUsuarioView_Load(object sender, EventArgs e)
+        {
+            Conexione repo = new Conexione();
+            SqlConnection con = repo.AbrirConexion();
+            Usuario user = repo.LeerUsuario(con);
+            if (user.dni != null)
+            {
+                modificarUser = true;
+                editDNI.Text = user.dni;
+                editNombre.Text = user.nombre;
+                editApellido1.Text = user.apellido;
+                editDireccion.Text = user.direccion;
+                editCP.Text = user.cp;
+                editCiudad.Text = user.ciudad;
+                editProvincia.Text = user.provincia;
             }
         }
     }

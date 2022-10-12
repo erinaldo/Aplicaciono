@@ -128,6 +128,7 @@
             // 
             // editDNI
             // 
+            this.editDNI.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.editDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editDNI.Location = new System.Drawing.Point(80, 27);
             this.editDNI.Margin = new System.Windows.Forms.Padding(2);
@@ -135,10 +136,10 @@
             this.editDNI.Size = new System.Drawing.Size(170, 26);
             this.editDNI.TabIndex = 9;
             this.editDNI.Validating += new System.ComponentModel.CancelEventHandler(this.editDNI_Validating);
-            this.editDNI.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editNombre
             // 
+            this.editNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.editNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editNombre.Location = new System.Drawing.Point(80, 57);
             this.editNombre.Margin = new System.Windows.Forms.Padding(2);
@@ -146,10 +147,10 @@
             this.editNombre.Size = new System.Drawing.Size(170, 26);
             this.editNombre.TabIndex = 10;
             this.editNombre.Validating += new System.ComponentModel.CancelEventHandler(this.editNombre_Validating);
-            this.editNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editApellido1
             // 
+            this.editApellido1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.editApellido1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editApellido1.Location = new System.Drawing.Point(80, 87);
             this.editApellido1.Margin = new System.Windows.Forms.Padding(2);
@@ -157,10 +158,10 @@
             this.editApellido1.Size = new System.Drawing.Size(170, 26);
             this.editApellido1.TabIndex = 11;
             this.editApellido1.Validating += new System.ComponentModel.CancelEventHandler(this.editApellido1_Validating);
-            this.editApellido1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editDireccion
             // 
+            this.editDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.editDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editDireccion.Location = new System.Drawing.Point(80, 117);
             this.editDireccion.Margin = new System.Windows.Forms.Padding(2);
@@ -168,10 +169,10 @@
             this.editDireccion.Size = new System.Drawing.Size(170, 26);
             this.editDireccion.TabIndex = 13;
             this.editDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.editDireccion_Validating);
-            this.editDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editProvincia
             // 
+            this.editProvincia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.editProvincia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editProvincia.Location = new System.Drawing.Point(385, 90);
             this.editProvincia.Margin = new System.Windows.Forms.Padding(2);
@@ -179,10 +180,10 @@
             this.editProvincia.Size = new System.Drawing.Size(170, 26);
             this.editProvincia.TabIndex = 17;
             this.editProvincia.Validating += new System.ComponentModel.CancelEventHandler(this.editProvincia_Validating);
-            this.editProvincia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editCiudad
             // 
+            this.editCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.editCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editCiudad.Location = new System.Drawing.Point(385, 60);
             this.editCiudad.Margin = new System.Windows.Forms.Padding(2);
@@ -190,10 +191,10 @@
             this.editCiudad.Size = new System.Drawing.Size(170, 26);
             this.editCiudad.TabIndex = 16;
             this.editCiudad.Validating += new System.ComponentModel.CancelEventHandler(this.editCiudad_Validating);
-            this.editCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // editCP
             // 
+            this.editCP.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.editCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editCP.Location = new System.Drawing.Point(385, 30);
             this.editCP.Margin = new System.Windows.Forms.Padding(2);
@@ -201,7 +202,6 @@
             this.editCP.Size = new System.Drawing.Size(170, 26);
             this.editCP.TabIndex = 15;
             this.editCP.Validating += new System.ComponentModel.CancelEventHandler(this.editCP_Validating);
-            this.editCP.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // btGuardar
             // 
@@ -253,6 +253,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CrearUsuarioView";
             this.Text = "CrearUsuario";
+            this.Load += new System.EventHandler(this.CrearUsuarioView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

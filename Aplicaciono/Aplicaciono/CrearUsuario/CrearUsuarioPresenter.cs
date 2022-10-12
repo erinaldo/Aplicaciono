@@ -18,10 +18,17 @@ namespace Aplicaciono.CrearUsuario
 
         string mensaje = "¿Estas seguro que quieres cancelar? Esto borrará todo lo que has introducido y cerrará el programa";
         string caption = "Cancelar";
+        private CrearUsuarioView crearUsuarioView;
 
-        public CrearUsuarioPresenter(CrearUsuarioView view, Conexione repo)
+        public CrearUsuarioPresenter(Usuario usuario, SqlConnection con, bool modificarUsuario)
         {
             this.view = view;
+            this.repo = repo;
+        }
+
+        public CrearUsuarioPresenter(CrearUsuarioView crearUsuarioView, Conexione repo)
+        {
+            this.crearUsuarioView = crearUsuarioView;
             this.repo = repo;
         }
 
@@ -111,7 +118,7 @@ namespace Aplicaciono.CrearUsuario
             {
                 con = repo.AbrirConexion();
 
-                if (repo.GuardarUsuario(con, usuario))
+                if (repo.GuardarUsuario(con, usuario, true))
                 {
                     MessageBox.Show("Los datos se han introducido correctamente");
                 }
@@ -138,6 +145,41 @@ namespace Aplicaciono.CrearUsuario
             {
                 Application.Exit();
             }
+        }
+
+        public bool guardarClick(Usuario usuario, SqlConnection con, bool modificarUsuario)
+        {
+            string sql = "";
+            using (con)
+            {
+                try
+                {
+                    if (modificarUsuario == false)
+                    {
+
+                        sql = "INSERT INTO Usuario(dni,nombre,apellido,direccion," +
+                            "cp, ciudad,provincia) VALUES('" + usuario.dni + "','" + usuario.nombre + "','" + usuario.apellido + "'" +
+                            ",'" + usuario.direccion + "', '" + int.Parse(usuario.cp) + "'," +
+                            " '" + usuario.ciudad + "', '" + usuario.provincia + "')";
+                    }
+                    else
+                    {
+                        sql = "UPDATE Usuario set dni ='" + usuario.dni + "', nombre ='" + usuario.nombre + "', apellido ='" + usuario.apellido + "'" +
+                            ", direccion = '" + usuario.direccion + "', cp='" + int.Parse(usuario.cp) + "', ciudad = " +
+                            " '" + usuario.ciudad + "', provincia = '" + usuario.provincia + "' where dni = '" + usuario.dni + "'";
+                    }
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+            return true;
+
         }
     }
 }

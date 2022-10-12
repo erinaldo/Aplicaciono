@@ -9,6 +9,7 @@ namespace Aplicaciono.CrearUsuario
         private static string valNombre = @"^([A-ZÁÉÍÓÚ]+[\s]*)+$";
         private static string valDireccion = @"^([A-ZÁÉÍÓÚ,0-9]+[\s]*)+$";
         private static string valCP = @"^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$";
+        private static string valNumbers = @"[0-9]*[\.\,]?[.0-9]+";
         private static Match match;
         private static Match match2;
 
@@ -53,6 +54,16 @@ namespace Aplicaciono.CrearUsuario
                 return true;
             }
             return false;
+        }
+
+        public static bool ValidarNumeros(string editNumero)
+        {
+            match = Regex.Match(editNumero, valNumbers, RegexOptions.IgnoreCase);
+            if (editNumero != string.Empty && match.Success)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
