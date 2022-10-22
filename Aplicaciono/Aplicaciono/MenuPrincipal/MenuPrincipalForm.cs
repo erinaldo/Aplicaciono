@@ -1,4 +1,5 @@
-﻿using Aplicaciono.CrearUsuario;
+﻿using Aplicaciono.CargarFactura;
+using Aplicaciono.CrearUsuario;
 using Aplicaciono.Facturas;
 using Aplicaciono.Informes;
 using System;
@@ -32,6 +33,12 @@ namespace Aplicaciono.MenuPrincipal
         {
             CrearUsuarioView fact = new CrearUsuarioView();
             fact.Show();
-        }        
+        }
+
+        private void btnGenerarGastos_Click(object sender, EventArgs e)
+        {
+            CargarFacturaBox fact = new CargarFacturaBox();
+            fact.Show();
+        }
     }
 }
