@@ -45,7 +45,7 @@ namespace Aplicaciono.Splash
                 menu.ShowDialog();
             }
             CrearUsuarioView crearUsuario = new CrearUsuarioView();
-            crearUsuario.ShowDialog();
+          //  crearUsuario.ShowDialog();
         }
     }
 }

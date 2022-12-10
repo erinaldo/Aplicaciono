@@ -20,7 +20,7 @@ namespace Aplicaciono.Facturas
         decimal suma = 0;
         decimal descuento = 0;
 
-        public FacturasView()
+        public FacturasView(string numFactura)
         {
             InitializeComponent();
         }

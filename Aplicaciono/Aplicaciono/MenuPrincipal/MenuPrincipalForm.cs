@@ -18,7 +18,7 @@ namespace Aplicaciono.MenuPrincipal
 
         private void btnGenerarFact_Click(object sender, EventArgs e)
         {
-            FacturasView fact = new FacturasView();
+            FacturasView fact = new FacturasView("");
             fact.ShowDialog();
         }
 
